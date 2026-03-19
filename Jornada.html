@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada da Requisição: Duas Viagens</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-active {
+            border-bottom: 4px solid #3b82f6;
+            color: #1e3a8a;
+            font-weight: bold;
+            background-color: #eff6ff;
+        }
+
+        .tab-inactive {
+            border-bottom: 4px solid transparent;
+            color: #6b7280;
+        }
+
+        .tab-inactive:hover {
+            color: #374151;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex flex-col items-center py-8 px-4 font-sans">
+
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-xl overflow-hidden">
+
+        <!-- Cabeçalho -->
+        <div class="bg-slate-800 text-white p-6 md:p-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500">
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold mb-2">A Jornada da Requisição: As Duas Viagens</h1>
+            <p class="text-slate-300 max-w-3xl mx-auto">
+                Na internet, a comunicação nunca é um passo só. Primeiro descobrimos o caminho, depois fazemos a
+                entrega.
+            </p>
+        </div>
+
+        <!-- O Grande Paradigma (Mensagem de Ênfase) -->
+        <div
+            class="bg-blue-50 border-b border-blue-100 p-4 flex flex-col md:flex-row justify-center items-center gap-4 text-sm md:text-base text-blue-900">
+            <div class="flex items-center gap-2">
+                <i data-lucide="search" class="text-blue-600"></i>
+                <span><strong>DNS:</strong> Descobrir para onde ir (IP).</span>
+            </div>
+            <div class="hidden md:block text-blue-300">|</div>
+            <div class="flex items-center gap-2">
+                <i data-lucide="route" class="text-blue-600"></i>
+                <span><strong>Rede (Gateway/NAT):</strong> Chegar até lá.</span>
+            </div>
+            <div class="hidden md:block text-blue-300">|</div>
+            <div class="flex items-center gap-2">
+                <i data-lucide="message-square" class="text-blue-600"></i>
+                <span><strong>Software (HTTP/Portas):</strong> Conversar.</span>
+            </div>
+        </div>
+
+        <!-- Abas (Tabs) -->
+        <div class="flex border-b border-gray-200">
+            <button onclick="switchTrip(1)" id="tab-trip-1"
+                class="flex-1 py-4 px-2 text-center transition-colors duration-200 tab-active">
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-xs font-bold uppercase tracking-wider opacity-70">Passo 1</span>
+                    <span class="text-base md:text-lg">Viagem do DNS (Descobrir o IP)</span>
+                </div>
+            </button>
+            <button onclick="switchTrip(2)" id="tab-trip-2"
+                class="flex-1 py-4 px-2 text-center transition-colors duration-200 tab-inactive">
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-xs font-bold uppercase tracking-wider opacity-70">Passo 2</span>
+                    <span class="text-base md:text-lg">Viagem HTTP/HTTPS (Trocar Dados)</span>
+                </div>
+            </button>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="p-6 md:p-8">
+            <div class="mb-6 text-center text-gray-600 italic text-sm md:text-base" id="trip-description">
+                <!-- Descrição da viagem injetada via JS -->
+            </div>
+
+            <!-- Grid do Diagrama -->
+            <div id="diagram-grid" class="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 w-full">
+                <!-- Os nós serão renderizados aqui via JavaScript -->
+            </div>
+
+            <!-- Painel de Informação -->
+            <div id="info-panel"
+                class="w-full p-5 md:p-6 rounded-xl border-l-4 transition-all duration-300 min-h-[140px] flex items-center shadow-md bg-gray-50 border-gray-300">
+                <div class="w-full text-center text-gray-500 italic flex flex-col items-center justify-center gap-2">
+                    <i data-lucide="mouse-pointer-click" class="text-gray-400 w-8 h-8 animate-bounce"></i>
+                    <p>Selecione uma etapa do fluxo acima para exibir sua função técnica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados da Viagem 1 (DNS)
+        const trip1Nodes = [
+            { id: '1-usuario', icon: 'user', title: 'Usuário', subtitle: 'A Intenção', description: 'O usuário digita "sistema-industrial.com" no navegador.', color: 'border-emerald-500', bgColor: 'bg-emerald-50', iconColor: 'text-emerald-600' },
+            { id: '1-cliente', icon: 'laptop', title: 'Cliente', subtitle: 'Preciso do IP!', description: 'O navegador quer enviar o pacote HTTP, mas não pode. Roteadores não entendem nomes, só números (IPs). Ele pausa a requisição HTTP e inicia uma requisição DNS.', color: 'border-blue-500', bgColor: 'bg-blue-50', iconColor: 'text-blue-500' },
+            { id: '1-redelocal', icon: 'wifi', title: 'Rede Local', subtitle: 'Enlace', description: 'A pergunta "Quem é sistema-industrial.com?" viaja pelo Wi-Fi ou cabo até o roteador local.', color: 'border-cyan-500', bgColor: 'bg-cyan-50', iconColor: 'text-cyan-500' },
+            { id: '1-gateway', icon: 'router', title: 'Gateway', subtitle: 'Encaminhamento', description: 'O roteador local recebe a pergunta e a encaminha para a internet (geralmente para o servidor DNS do seu provedor de internet).', color: 'border-orange-500', bgColor: 'bg-orange-50', iconColor: 'text-orange-500' },
+            { id: '1-internet', icon: 'cloud', title: 'Internet', subtitle: 'Rotas ISP', description: 'A requisição DNS viaja pela infraestrutura da operadora.', color: 'border-gray-500', bgColor: 'bg-gray-50', iconColor: 'text-gray-500' },
+            { id: '1-dns', icon: 'search', title: 'Servidor DNS', subtitle: 'Resolução', description: 'O DNS consulta sua base de dados (ou a árvore do DNS) e encontra: "sistema-industrial.com" = "203.0.113.50".', color: 'border-indigo-500', bgColor: 'bg-indigo-50', iconColor: 'text-indigo-500' },
+            { id: '1-retorno', icon: 'arrow-left-circle', title: 'Resposta DNS', subtitle: 'IP Recebido', description: 'A resposta volta para o Cliente. Agora o notebook sabe o endereço físico (IP) do destino. O DNS sai de cena; ele NÃO participará da troca de dados HTTP.', color: 'border-pink-500', bgColor: 'bg-pink-50', iconColor: 'text-pink-600' }
+        ];
+
+        // Dados da Viagem 2 (HTTP/HTTPS)
+        const trip2Nodes = [
+            { id: '2-cliente', icon: 'laptop', title: 'Cliente', subtitle: 'Monta a Requisição', description: 'Sabendo o IP (203.0.113.50), o navegador agora sim monta o pacote HTTP/HTTPS com os dados de login ou acesso à página.', color: 'border-blue-500', bgColor: 'bg-blue-50', iconColor: 'text-blue-500' },
+            { id: '2-porta', icon: 'waypoints', title: 'Portas', subtitle: 'Camada de Transporte', description: 'O sistema abre uma porta de origem aleatória (ex: 50123) e mira na porta de destino do Servidor Web (ex: 443 para HTTPS). Isso permite a conversação do software.', color: 'border-purple-500', bgColor: 'bg-purple-50', iconColor: 'text-purple-500' },
+            { id: '2-redelocal', icon: 'wifi', title: 'Rede Local', subtitle: 'Enlace Mac', description: 'O pacote viaja até o roteador local na camada de enlace.', color: 'border-cyan-500', bgColor: 'bg-cyan-50', iconColor: 'text-cyan-500' },
+            { id: '2-gateway', icon: 'router', title: 'Gateway', subtitle: 'Ponto de Saída', description: 'O roteador identifica que o IP 203.0.113.50 está na rede externa e prepara o pacote para a rua.', color: 'border-orange-500', bgColor: 'bg-orange-50', iconColor: 'text-orange-500' },
+            { id: '2-nat', icon: 'arrow-left-right', title: 'NAT', subtitle: 'Tradução IP', description: 'Crucial: O roteador troca o IP privado do notebook pelo IP público da casa. A rede usa isso para garantir que a resposta saiba como voltar.', color: 'border-amber-500', bgColor: 'bg-amber-50', iconColor: 'text-amber-500' },
+            { id: '2-internet', icon: 'cloud', title: 'Internet', subtitle: 'Backbone / ISP', description: 'Os roteadores BGP da internet encaminham o pacote pelo caminho mais rápido até o data center de destino.', color: 'border-gray-500', bgColor: 'bg-gray-50', iconColor: 'text-gray-500' },
+            { id: '2-web', icon: 'server', title: 'Servidor Web', subtitle: 'Porta 443', description: 'O pacote chega ao servidor (Nginx/Apache). Ele desencapsula, lê o HTTP e vê qual página foi pedida.', color: 'border-teal-500', bgColor: 'bg-teal-50', iconColor: 'text-teal-600' },
+            { id: '2-app', icon: 'cpu', title: 'Servidor App', subtitle: 'Backend', description: 'O servidor de aplicação (Node, Java, Python) executa a lógica de negócios e verifica permissões.', color: 'border-indigo-500', bgColor: 'bg-indigo-50', iconColor: 'text-indigo-600' },
+            { id: '2-bd', icon: 'database', title: 'Banco de Dados', subtitle: 'Armazenamento', description: 'Consulta os dados industriais necessários (SQL/NoSQL) e devolve para o backend montar a tela.', color: 'border-red-500', bgColor: 'bg-red-50', iconColor: 'text-red-500' },
+            { id: '2-resposta', icon: 'check-circle', title: 'Resposta', subtitle: 'Caminho Inverso', description: 'A página web completa faz todo o caminho inverso de volta pelo túnel TCP/IP aberto, chegando diretamente à tela do usuário.', color: 'border-emerald-500', bgColor: 'bg-emerald-50', iconColor: 'text-emerald-600' }
+        ];
+
+        let currentTrip = 1;
+        let activeNodeId = null;
+
+        const gridContainer = document.getElementById('diagram-grid');
+        const infoPanel = document.getElementById('info-panel');
+        const tripDescription = document.getElementById('trip-description');
+        const tab1 = document.getElementById('tab-trip-1');
+        const tab2 = document.getElementById('tab-trip-2');
+
+        function switchTrip(tripNumber) {
+            currentTrip = tripNumber;
+            activeNodeId = null; // Reseta seleção
+
+            // Atualiza abas
+            if (tripNumber === 1) {
+                tab1.className = "flex-1 py-4 px-2 text-center transition-colors duration-200 tab-active";
+                tab2.className = "flex-1 py-4 px-2 text-center transition-colors duration-200 tab-inactive";
+                tripDescription.innerHTML = "<strong>Foco:</strong> O pacote HTTP não sai da máquina local até que o navegador saiba para qual IP enviá-lo. Esta é a viagem de reconhecimento.";
+            } else {
+                tab2.className = "flex-1 py-4 px-2 text-center transition-colors duration-200 tab-active";
+                tab1.className = "flex-1 py-4 px-2 text-center transition-colors duration-200 tab-inactive";
+                tripDescription.innerHTML = "<strong>Foco:</strong> Com o IP em mãos, a conexão TCP é feita. O DNS ficou no passado. A conversa agora é direta entre o Cliente e os Servidores através da rede.";
+            }
+
+            resetInfoPanel();
+            renderGrid();
+        }
+
+        function renderGrid() {
+            gridContainer.innerHTML = '';
+            const nodes = currentTrip === 1 ? trip1Nodes : trip2Nodes;
+
+            nodes.forEach((node, index) => {
+                const isActive = activeNodeId === node.id;
+
+                // Elemento do Nó
+                const nodeEl = document.createElement('div');
+                nodeEl.className = `flex flex-col items-center justify-start p-3 w-28 md:w-32 h-36 md:h-40 rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md
+                    ${isActive ? `${node.color} ${node.bgColor} shadow-lg scale-105` : 'border-gray-200 bg-white hover:border-gray-300'}`;
+                nodeEl.onclick = () => selectNode(node);
+
+                nodeEl.innerHTML = `
+                    <div class="mb-2 mt-1"><i data-lucide="${node.icon}" class="${node.iconColor} w-8 h-8"></i></div>
+                    <h3 class="font-bold text-center text-xs md:text-sm text-gray-800 mb-1 leading-tight">${node.title}</h3>
+                    <span class="text-[10px] md:text-xs text-center text-gray-500 px-1 font-medium bg-gray-100/80 rounded py-0.5 mt-auto w-full break-words line-clamp-2">
+                        ${node.subtitle}
+                    </span>
+                `;
+                gridContainer.appendChild(nodeEl);
+
+                // Seta (exceto no último)
+                if (index < nodes.length - 1) {
+                    const arrowEl = document.createElement('div');
+                    arrowEl.className = 'hidden lg:flex flex-col justify-center text-gray-300';
+                    arrowEl.innerHTML = `<i data-lucide="arrow-right" class="animate-pulse text-gray-400 w-5 h-5"></i>`;
+                    gridContainer.appendChild(arrowEl);
+                }
+            });
+            lucide.createIcons();
+        }
+
+        function selectNode(node) {
+            activeNodeId = node.id;
+            renderGrid();
+
+            infoPanel.className = `w-full p-5 md:p-6 rounded-xl border-l-4 transition-all duration-300 min-h-[140px] flex items-center shadow-sm ${node.bgColor} ${node.color}`;
+            infoPanel.innerHTML = `
+                <div class="fade-in w-full">
+                    <div class="flex items-center gap-3 mb-2 md:mb-3">
+                        <div class="p-2 bg-white rounded-lg shadow-sm">
+                            <i data-lucide="${node.icon}" class="${node.iconColor} w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800">
+                            ${node.title} <span class="text-sm font-normal text-gray-500 ml-2">| ${node.subtitle}</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">${node.description}</p>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function resetInfoPanel() {
+            infoPanel.className = "w-full p-5 md:p-6 rounded-xl border-l-4 transition-all duration-300 min-h-[140px] flex items-center shadow-md bg-gray-50 border-gray-300";
+            infoPanel.innerHTML = `
+                <div class="w-full text-center text-gray-500 italic flex flex-col items-center justify-center gap-2 fade-in">
+                    <i data-lucide="mouse-pointer-click" class="text-gray-400 w-8 h-8 animate-bounce"></i>
+                    <p>Selecione uma etapa do fluxo acima para exibir sua função técnica.</p>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Inicialização
+        switchTrip(1);
+
+    </script>
+</body>
+
+</html>

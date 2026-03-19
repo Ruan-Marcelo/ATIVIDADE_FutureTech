@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore Hierárquica do DNS</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Estilos para as linhas da árvore */
+        .tree-line {
+            position: relative;
+        }
+        .tree-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1rem;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb; /* gray-200 */
+        }
+        .tree-item {
+            position: relative;
+        }
+        .tree-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem; /* meio do item */
+            left: -1rem;
+            width: 1rem;
+            height: 2px;
+            background-color: #e5e7eb;
+        }
+        /* Remove a linha vertical após o último filho para não vazar pra baixo */
+        .tree-container > div:last-child > .tree-line::before {
+            bottom: auto;
+            height: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="flex flex-col md:flex-row w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg font-sans overflow-hidden">
+        
+        <!-- Lado Esquerdo: A Árvore -->
+        <div class="w-full md:w-3/5 p-6 md:p-8 bg-gray-50 border-r border-gray-200 overflow-y-auto max-h-[85vh]">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">A Árvore do DNS</h2>
+            <p class="text-sm text-gray-500 mb-6">Clique nos nós com a seta (▶) para expandir e explorar a hierarquia. Clique no nome para ver detalhes.</p>
+            
+            <div id="dns-tree-root" class="text-sm md:text-base">
+                <!-- Árvore injetada via JS -->
+            </div>
+        </div>
+
+        <!-- Lado Direito: Painel de Explicação -->
+        <div class="w-full md:w-2/5 p-6 md:p-8 flex flex-col">
+            <div id="info-panel" class="flex-1 flex flex-col justify-center items-center text-center p-6 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 bg-gray-50">
+                <i data-lucide="network" class="w-16 h-16 text-gray-400 mb-4"></i>
+                <h3 class="text-lg font-bold mb-2">Explorador de Domínios</h3>
+                <p>Selecione qualquer nó na árvore ao lado para entender o que ele representa na arquitetura do DNS.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Estrutura de Dados da Árvore DNS
+        const dnsData = {
+            id: 'root',
+            name: '.',
+            type: 'Raiz (Root)',
+            color: 'bg-red-100 text-red-800 border-red-300',
+            icon: 'globe',
+            desc: 'O nível mais alto da hierarquia do DNS. Existem 13 servidores lógicos raiz no mundo (de A a M) que sabem os endereços dos servidores responsáveis pelos TLDs (como .com, .br, .org). Todas as resoluções completas começam implicitamente com um ponto final.',
+            expanded: true,
+            children: [
+                {
+                    id: 'br',
+                    name: '.br',
+                    type: 'ccTLD (Country Code)',
+                    color: 'bg-green-100 text-green-800 border-green-300',
+                    icon: 'flag',
+                    desc: 'Domínio de Topo de Código de País (ccTLD). Administrado pelo Registro.br (CGI.br). Representa a internet brasileira.',
+                    expanded: true,
+                    children: [
+                        {
+                            id: 'com-br',
+                            name: 'com.br',
+                            type: 'SLD (Second-Level)',
+                            color: 'bg-blue-100 text-blue-800 border-blue-300',
+                            icon: 'building-2',
+                            desc: 'Atividades comerciais no Brasil. É o subdomínio mais popular dentro do .br.',
+                            expanded: false,
+                            children: [
+                                { id: 'uol-com-br', name: 'uol.com.br', type: 'Domínio Principal', color: 'bg-purple-100 text-purple-800 border-purple-300', icon: 'layout', desc: 'Domínio registrado por uma empresa (Universo Online).' },
+                                { id: 'sspot-com-br', name: 'sspot.com.br', type: 'Domínio Principal', color: 'bg-purple-100 text-purple-800 border-purple-300', icon: 'gamepad-2', desc: 'Exemplo fictício de um domínio registrado para o metaverso educacional SSPOT-VR.' }
+                            ]
+                        },
+                        {
+                            id: 'usp-br',
+                            name: 'usp.br',
+                            type: 'SLD (Universidade)',
+                            color: 'bg-blue-100 text-blue-800 border-blue-300',
+                            icon: 'graduation-cap',
+                            desc: 'Domínio registrado pela Universidade de São Paulo diretamente sob o .br (historicamente, universidades mais antigas no Brasil conseguiram esse registro direto, em vez de usarem .edu.br).',
+                            expanded: true,
+                            children: [
+                                { id: 'icmc-usp-br', name: 'icmc.usp.br', type: 'Subdomínio', color: 'bg-orange-100 text-orange-800 border-orange-300', icon: 'microscope', desc: 'Instituto de Ciências Matemáticas e de Computação da USP, em São Carlos. O servidor DNS da USP delega a autoridade deste subdomínio para os servidores do próprio ICMC.' },
+                                { id: 'sistemas-icmc', name: 'sistemas.icmc.usp.br', type: 'Host / Subdomínio', color: 'bg-teal-100 text-teal-800 border-teal-300', icon: 'server', desc: 'Aponta para um servidor específico ou sistema web dentro da rede do ICMC.' }
+                            ]
+                        },
+                        {
+                            id: 'gov-br',
+                            name: 'gov.br',
+                            type: 'SLD (Governamental)',
+                            color: 'bg-blue-100 text-blue-800 border-blue-300',
+                            icon: 'landmark',
+                            desc: 'Reservado exclusivo para instituições do governo federal, estadual ou municipal no Brasil.',
+                            expanded: false,
+                            children: [
+                                { id: 'mec-gov-br', name: 'mec.gov.br', type: 'Domínio Principal', color: 'bg-purple-100 text-purple-800 border-purple-300', icon: 'book-open', desc: 'Ministério da Educação.' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'com',
+                    name: '.com',
+                    type: 'gTLD (Genérico)',
+                    color: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+                    icon: 'briefcase',
+                    desc: 'Generic Top-Level Domain. Originalmente para empresas COMerciais, hoje é aberto e o domínio mais utilizado no mundo.',
+                    expanded: true,
+                    children: [
+                        {
+                            id: 'google-com',
+                            name: 'google.com',
+                            type: 'Domínio Principal',
+                            color: 'bg-purple-100 text-purple-800 border-purple-300',
+                            icon: 'search',
+                            desc: 'Domínio registrado pela Google LLC.',
+                            expanded: false,
+                            children: [
+                                { id: 'mail-google-com', name: 'mail.google.com', type: 'Subdomínio', color: 'bg-orange-100 text-orange-800 border-orange-300', icon: 'mail', desc: 'Subdomínio que aponta para o serviço do Gmail.' },
+                                { id: 'drive-google-com', name: 'drive.google.com', type: 'Subdomínio', color: 'bg-orange-100 text-orange-800 border-orange-300', icon: 'cloud', desc: 'Subdomínio que aponta para o Google Drive.' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'org',
+                    name: '.org',
+                    type: 'gTLD (Genérico)',
+                    color: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+                    icon: 'users',
+                    desc: 'Originalmente voltado para organizações sem fins lucrativos (ORGanizations). Hoje é de uso livre, mas fortemente adotado por projetos open-source e ONGs.',
+                    expanded: false,
+                    children: [
+                        {
+                            id: 'wikipedia-org',
+                            name: 'wikipedia.org',
+                            type: 'Domínio Principal',
+                            color: 'bg-purple-100 text-purple-800 border-purple-300',
+                            icon: 'library',
+                            desc: 'Fundação Wikimedia.',
+                            expanded: true,
+                            children: [
+                                { id: 'pt-wikipedia-org', name: 'pt.wikipedia.org', type: 'Subdomínio', color: 'bg-orange-100 text-orange-800 border-orange-300', icon: 'languages', desc: 'A Wikipédia usa subdomínios para separar as versões de idiomas do seu site (neste caso, Português).' },
+                                { id: 'en-wikipedia-org', name: 'en.wikipedia.org', type: 'Subdomínio', color: 'bg-orange-100 text-orange-800 border-orange-300', icon: 'languages', desc: 'Versão em Inglês.' }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        let activeNodeId = null;
+
+        function toggleNode(e, node) {
+            e.stopPropagation(); // Evita que o clique no botão de expandir também acione o card inteiro
+            node.expanded = !node.expanded;
+            renderTree();
+        }
+
+        function selectNode(node) {
+            activeNodeId = node.id;
+            renderTree();
+            
+            const infoPanel = document.getElementById('info-panel');
+            infoPanel.className = `flex-1 flex flex-col items-start p-6 md:p-8 rounded-xl transition-all duration-300 ${node.color} border-2 shadow-sm fade-in`;
+            
+            infoPanel.innerHTML = `
+                <div class="flex items-center gap-3 mb-4 bg-white/50 p-3 rounded-lg w-full shadow-sm">
+                    <i data-lucide="${node.icon}" class="w-8 h-8 opacity-80"></i>
+                    <div>
+                        <h3 class="text-2xl font-bold">${node.name}</h3>
+                        <span class="text-xs font-bold uppercase tracking-wider opacity-75">${node.type}</span>
+                    </div>
+                </div>
+                <div class="bg-white/60 p-4 rounded-lg w-full shadow-sm">
+                    <h4 class="font-bold text-sm mb-1 opacity-80 uppercase tracking-wide">O que significa?</h4>
+                    <p class="leading-relaxed text-gray-800 text-base md:text-lg">${node.desc}</p>
+                </div>
+                
+                ${node.children ? `
+                    <div class="mt-4 p-4 w-full border-t border-black/10">
+                        <p class="text-sm font-medium opacity-80">
+                            <strong>Contém:</strong> ${node.children.length} subníveis mapeados neste exemplo.
+                        </p>
+                    </div>
+                ` : ''}
+            `;
+            lucide.createIcons();
+        }
+
+        function createTreeNode(node) {
+            const hasChildren = node.children && node.children.length > 0;
+            const isActive = node.id === activeNodeId;
+            
+            const container = document.createElement('div');
+            container.className = 'tree-container ml-4 mt-2';
+
+            const itemWrapper = document.createElement('div');
+            itemWrapper.className = 'tree-item flex items-center mb-2';
+
+            // Botão de expandir/colapsar
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = `w-6 h-6 flex items-center justify-center mr-2 rounded hover:bg-gray-200 text-gray-500 transition-transform ${hasChildren ? '' : 'invisible'} ${node.expanded ? 'rotate-90' : ''}`;
+            toggleBtn.innerHTML = `<i data-lucide="chevron-right" class="w-4 h-4"></i>`;
+            if (hasChildren) {
+                toggleBtn.onclick = (e) => toggleNode(e, node);
+            }
+
+            // Card principal do nó
+            const card = document.createElement('div');
+            card.className = `flex items-center gap-2 px-3 py-1.5 rounded-lg border cursor-pointer transition-all hover:shadow-md 
+                ${node.color} ${isActive ? 'ring-2 ring-offset-2 scale-[1.02] font-bold' : 'opacity-90 hover:opacity-100'}`;
+            card.onclick = () => selectNode(node);
+            
+            card.innerHTML = `
+                <i data-lucide="${node.icon}" class="w-4 h-4"></i>
+                <span>${node.name}</span>
+            `;
+
+            itemWrapper.appendChild(toggleBtn);
+            itemWrapper.appendChild(card);
+            container.appendChild(itemWrapper);
+
+            // Renderiza filhos se estiver expandido
+            if (hasChildren && node.expanded) {
+                const childrenContainer = document.createElement('div');
+                childrenContainer.className = 'tree-line ml-3'; // A margem empurra os filhos pra direita
+                
+                node.children.forEach(child => {
+                    childrenContainer.appendChild(createTreeNode(child));
+                });
+                
+                container.appendChild(childrenContainer);
+            }
+
+            return container;
+        }
+
+        function renderTree() {
+            const rootEl = document.getElementById('dns-tree-root');
+            rootEl.innerHTML = '';
+            
+            // O contêiner pai principal não precisa de linha vertical
+            const mainContainer = document.createElement('div');
+            mainContainer.appendChild(createTreeNode(dnsData));
+            
+            // Ajuste visual para a raiz não ter linha à esquerda
+            const firstItem = mainContainer.querySelector('.tree-item');
+            if(firstItem) firstItem.classList.remove('tree-item');
+
+            rootEl.appendChild(mainContainer);
+            lucide.createIcons();
+        }
+
+        // Inicializa
+        renderTree();
+        // Seleciona a raiz por padrão para já mostrar algo no painel
+        selectNode(dnsData);
+
+    </script>
+</body>
+</html>
