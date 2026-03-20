@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Portal de Exercícios</title>
-    <link rel="icon" type="image/x-icon" href="https://static.thenounproject.com/png/34322-200.png">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://static.thenounproject.com/png/34322-200.png"
+    />
 
     <style>
       body {
-        overflow: hidden;
+        overflow-x: hidden;
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
         margin: 0;
@@ -62,8 +66,26 @@
         color: white;
         font-weight: bold;
       }
-      .redes:hover{
-        color:black
+      .redes:hover {
+        color: black;
+      }
+      .dark {
+        background-color: #121212;
+        color: white;
+      }
+
+      .dark header,
+      .dark footer {
+        background-color: #000;
+      }
+
+      .dark .card {
+        background: #1e1e1e;
+        color: white;
+      }
+
+      .dark a {
+        color: #4da6ff;
       }
     </style>
   </head>
@@ -75,29 +97,56 @@
     </header>
 
     <main>
+      <div style="margin-top: 20px">
+        <input
+          type="text"
+          id="search"
+          placeholder="Buscar exercício..."
+          style="
+            padding: 10px;
+            width: 250px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          "
+        />
+        <button
+          onclick="toggleDarkMode()"
+          style="
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+          "
+        >
+          🌙 Modo Escuro
+        </button>
+      </div>
+
+      <p id="mensagem"></p>
+
       <h2>Lista de Exercícios</h2>
 
       <div class="links">
-        <div class="card">
+        <div class="card" data-nome="exercicio 1">
           <a href="aula_html1/index.html" target="_blank">Exercício 1</a>
         </div>
-        <div class="card">
+        <div class="card" data-nome="exercicio 2">
           <a href="aula_html1/aula2.html" target="_blank">Exercício 2</a>
         </div>
-        <div class="card">
+        <div class="card" data-nome="curriculo">
           <a href="curriculo/index.html" target="_blank">Curriculo</a>
         </div>
-        <div class="card">
+        <div class="card" data-nome="teste HTML">
           <a href="aula_html1/teste.html" target="_blank">Teste HTML</a>
         </div>
-        <div class="card">
+        <div class="card" data-nome="forms">
           <a href="aula_html2/index.html" target="_blank">Forms</a>
         </div>
 
-        <div class="card">
+        <div class="card" data-nome="future Tech">
           <a href="FutureTech/index.html" target="_blank">Future Tech</a>
         </div>
-        <div class="card">
+        <div class="card" data-nome="atividade Portal Senai">
           <a
             href="Atividade-Prática-Portal-SENAI-Ribeirão-Preto-RuanMarcelo/index.html"
             target="_blank"
@@ -105,29 +154,29 @@
           >
         </div>
 
-        <div class="card">
+        <div class="card" data-nome="future tech estilizado">
           <a href="estilizado/indexx_Estilizada.html" target="_blank"
             >Future Tech estilizado</a
           >
         </div>
 
-        <div class="card">
+        <div class="card" data-nome="exercicio 3">
           <a href="Atividade 3/index.html" target="_blank">Exercício 3</a>
         </div>
 
-        <div class="card">
+        <div class="card" data-nome="avaliação html">
           <a href="projeto-portal/index.html" target="_blank"
-            >AVALIAÇÂO DE HTML</a
+            >AVALIAÇÃO DE HTML</a
           >
         </div>
-        <div class="card">
+        <div class="card" data-nome="atividade css 1">
           <a href="./att-20-03/index.html" target="_blank">ATIVIDADE CSS 1</a>
         </div>
       </div>
     </main>
 
     <footer>
-      <p>&copy; 2026 - Portal de Exercícios -  Ruan Marcelo Ramacioti Luz</p>
+      <p>&copy; 2026 - Portal de Exercícios - Ruan Marcelo Ramacioti Luz</p>
       <p>
         <a
           href="http://zruanzito.com.br"
@@ -156,5 +205,39 @@
         </svg>
       </a>
     </footer>
+
+    <script>
+      const searchInput = document.getElementById("search");
+      const cards = document.querySelectorAll(".card");
+
+      searchInput.addEventListener("keyup", function () {
+        const filtro = searchInput.value.toLowerCase();
+
+        cards.forEach((card) => {
+          const nome = card.getAttribute("data-nome");
+
+          if (nome.includes(filtro)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+      }
+
+      const msg = document.getElementById("mensagem");
+      const hora = new Date().getHours();
+
+      if (hora < 12) {
+        msg.innerText = "Bom dia!";
+      } else if (hora < 18) {
+        msg.innerText = "Boa tarde!";
+      } else {
+        msg.innerText = "Boa noite!";
+      }
+    </script>
   </body>
 </html>
