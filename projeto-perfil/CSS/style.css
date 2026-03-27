@@ -7,7 +7,6 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #9900f9);
     height: 100vh;
     display: flex;
     justify-content: center;
