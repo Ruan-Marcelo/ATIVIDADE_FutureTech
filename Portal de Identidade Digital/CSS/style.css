@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-image: url("https://media.tenor.com/q-S49zU7n34AAAAM/goku-ssj.gif");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+#portal {
+    width: 90%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ffff;
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.foto {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+
+    background-image: url("https://i.pinimg.com/originals/68/f9/29/68f9297ec977af66958c684bfbf7dccd.gif");
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 50%;
+    border: 2px solid #ff00ff;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #00ffff;
+}
+
+.perfil p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.botao {
+    display: block;
+    margin: 10px 0;
+    padding: 12px;
+
+    text-decoration: none;
+    color: #ffffff;
+
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #00ffff;
+    color: #000000;
+    box-shadow: 0 0 10px #00ffff;
+}
