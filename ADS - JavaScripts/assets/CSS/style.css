@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+img{
+    width: 150px;
+    position: fixed;
+    display: felx;
+    margin: 20px auto;
+    width: 100px;
+}
+body{
+    background-image: url(../Images/Captura\ de\ tela\ 2026-04-24\ 195309.png);
+}
+.titulo{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    color: purple;
+    background: rgba(0, 0, 0, 0.238);
+}
+.subtitulo{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    color: rgb(140, 0, 255);
+    background: rgba(0, 0, 0, 0.238);
+}
+.cards{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.card{
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+.card:hover{
+    background: purple;
+}

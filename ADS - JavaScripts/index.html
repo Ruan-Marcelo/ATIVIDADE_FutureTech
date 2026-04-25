@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/CSS/style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/Images/Captura de tela 2026-04-24 200324.png">
+    <title>Aula 1 - JavaScripts</title>
+  </head>
+  <body>
+    <img src="./assets/Images/Captura de tela 2026-04-24 200324.png" alt="Logo do SENAI" class="logo" />
+
+    <div class="titulo">
+      <h1>Aula 1 - JavaScripts</h1>
+    </div>
+    <div class="subtitulo">
+      <p>Estruturas, Sintaxe e Regras</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Saudação</h3>
+        <input type="text" id="InputNome" placeholder="Digite seu nome" />
+        <button onclick="exibirSaudacao()">Saudar</button>
+        <p id="mensagemSaudacao">O Resultado aparece aqui</p>
+      </div>
+
+      <div class="card">
+        <h3>Calculadora</h3>
+        <div class="input-group">
+          <input type="number" id="InputNumero1" value="5" />
+          <input type="number" id="InputNumero2" value="5" />
+        </div>
+        <button onclick="calcularSoma()">Calcular Soma</button>
+        <p id="mensagemSoma">Resultado</p>
+      </div>
+    </div>
+
+    <script src="./assets/JS/main.js"></script>
+  </body>
+</html>
