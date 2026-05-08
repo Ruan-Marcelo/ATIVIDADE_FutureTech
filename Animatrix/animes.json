@@ -33,5 +33,198 @@
         "resumo": "Luffy busca o One Piece.",
 
         "curiosidade": "É o mangá mais vendido da história."
-    }
+    },
+{
+    "nome": "Attack on Titan",
+    "genero": "Ação",
+    "nota": 9.6,
+    "censura": 18,
+    "episodios": 89,
+    "imagem": "https://wallpaperaccess.com/full/2725441.jpg",
+    "video": "https://www.youtube.com/embed/MGRm4IzK1SQ",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "resumo": "Humanos lutam contra titãs gigantes.",
+    "curiosidade": "O anime ficou famoso pelo roteiro imprevisível."
+},
+
+{
+    "nome": "Death Note",
+    "genero": "Suspense",
+    "nota": 9.8,
+    "censura": 16,
+    "episodios": 37,
+    "imagem": "https://wallpapers.com/images/hd/good-anime-death-note-light-yagami-and-l-e7s2exwjdsc9o2j9.jpg",
+    "video": "https://www.youtube.com/embed/NlJZ-YgAt-c",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    "resumo": "Light encontra um caderno capaz de matar.",
+    "curiosidade": "L foi inspirado em Sherlock Holmes."
+},
+
+{
+    "nome": "Demon Slayer",
+    "genero": "Ação",
+    "nota": 9.4,
+    "censura": 16,
+    "episodios": 55,
+    "imagem": "https://4kwallpapers.com/images/walls/thumbs_2t/23615.jpg",
+    "video": "https://www.youtube.com/embed/VQGCKyvzIM4",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    "resumo": "Tanjiro busca salvar sua irmã demonizada.",
+    "curiosidade": "O filme bateu recordes no Japão."
+},
+
+{
+    "nome": "Dragon Ball Z",
+    "genero": "Luta",
+    "nota": 9.3,
+    "censura": 10,
+    "episodios": 291,
+    "imagem": "https://wallpapercat.com/w/full/a/6/e/142995-1920x1080-desktop-full-hd-dragon-ball-z-background.jpg",
+    "video": "https://www.youtube.com/embed/Byo4rgMHUM4",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    "resumo": "Goku protege a Terra de ameaças poderosas.",
+    "curiosidade": "Inspirou praticamente todos os shounens modernos."
+},
+
+{
+    "nome": "Jujutsu Kaisen",
+    "genero": "Sobrenatural",
+    "nota": 9.2,
+    "censura": 16,
+    "episodios": 47,
+    "imagem": "https://i.pinimg.com/736x/36/2e/0c/362e0c138594023b34ae8e7f900258a7.jpg",
+    "video": "https://www.youtube.com/embed/pkKu9hLT-t8",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+    "resumo": "Yuji entra no mundo das maldições.",
+    "curiosidade": "Gojo virou fenômeno mundial."
+},
+
+{
+    "nome": "Tokyo Ghoul",
+    "genero": "Terror",
+    "nota": 8.9,
+    "censura": 18,
+    "episodios": 48,
+    "imagem": "https://images.steamusercontent.com/ugc/862855679986098052/00064B6313A08F8DC0613831F5EBF7073B0857D6/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+    "video": "https://www.youtube.com/embed/vGuQeQsoRgU",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    "resumo": "Kaneki se torna meio-ghoul após um acidente.",
+    "curiosidade": "A opening Unravel ficou mundialmente famosa."
+},
+
+{
+    "nome": "Bleach",
+    "genero": "Ação",
+    "nota": 9.1,
+    "censura": 14,
+    "episodios": 366,
+    "imagem": "https://wallpapers.com/images/hd/most-badass-bleach-anime-n6oan77l9oms56yb.jpg",
+    "video": "https://www.youtube.com/embed/78WIYzX_m98",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+    "resumo": "Ichigo ganha poderes de Shinigami.",
+    "curiosidade": "Voltou após anos com Thousand Year Blood War."
+},
+
+{
+    "nome": "Hunter x Hunter",
+    "genero": "Aventura",
+    "nota": 9.7,
+    "censura": 14,
+    "episodios": 148,
+    "imagem": "https://images6.alphacoders.com/791/thumb-1920-791100.jpg",
+    "video": "https://www.youtube.com/embed/d6kBeJjTGnY",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+    "resumo": "Gon busca encontrar seu pai hunter.",
+    "curiosidade": "Possui um dos sistemas de poder mais elogiados."
+},
+
+{
+    "nome": "Fullmetal Alchemist",
+    "genero": "Fantasia",
+    "nota": 9.9,
+    "censura": 14,
+    "episodios": 64,
+    "imagem": "https://images.hdqwalls.com/wallpapers/fullmetal-alchemist-ii.jpg",
+    "video": "https://www.youtube.com/embed/dqDB6gQLbPM",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+    "resumo": "Dois irmãos usam alquimia para recuperar seus corpos.",
+    "curiosidade": "É considerado um dos melhores animes da história."
+},
+
+{
+    "nome": "Chainsaw Man",
+    "genero": "Ação",
+    "nota": 9.0,
+    "censura": 18,
+    "episodios": 12,
+    "imagem": "https://4kwallpapers.com/images/walls/thumbs_2t/23013.jpg",
+    "video": "https://www.youtube.com/embed/l96zmDlWCBk",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3",
+    "resumo": "Denji se funde com um demônio motosserra.",
+    "curiosidade": "O autor também criou Fire Punch."
+},
+{
+    "nome": "Blue Lock",
+    "genero": "Esporte",
+    "nota": 8.9,
+    "censura": 14,
+    "episodios": 24,
+    "imagem": "https://images6.alphacoders.com/131/1319754.jpeg",
+    "video": "https://www.youtube.com/embed/IYeipQNZFxE",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3",
+    "resumo": "Um projeto radical busca criar o atacante perfeito para o Japão.",
+    "curiosidade": "Blue Lock revolucionou os animes de futebol."
+},
+
+{
+    "nome": "Solo Leveling",
+    "genero": "Fantasia",
+    "nota": 9.4,
+    "censura": 16,
+    "episodios": 12,
+    "imagem": "https://4kwallpapers.com/images/wallpapers/sung-jinwoo-dragon-2560x1440-15351.jpg",
+    "video": "https://www.youtube.com/embed/I6JIwjWOhnQ",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3",
+    "resumo": "Sung Jin-Woo evolui de caçador fraco para o mais poderoso.",
+    "curiosidade": "O anime foi baseado em uma webtoon coreana famosa."
+},
+
+{
+    "nome": "My Hero Academia",
+    "genero": "Super Heróis",
+    "nota": 8.8,
+    "censura": 12,
+    "episodios": 138,
+    "imagem": "https://images3.alphacoders.com/859/859804.png",
+    "video": "https://www.youtube.com/embed/wIb3nnOeves",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
+    "resumo": "Izuku Midoriya sonha em se tornar o maior herói.",
+    "curiosidade": "All Might foi inspirado em heróis americanos."
+},
+
+{
+    "nome": "Spy x Family",
+    "genero": "Comédia",
+    "nota": 9.1,
+    "censura": 10,
+    "episodios": 37,
+    "imagem": "https://images5.alphacoders.com/132/thumb-1920-1325882.png",
+    "video": "https://www.youtube.com/embed/ofXigq9aIpo",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+    "resumo": "Uma família falsa é formada para uma missão secreta.",
+    "curiosidade": "Anya virou um dos personagens mais populares dos animes."
+},
+
+{
+    "nome": "Vinland Saga",
+    "genero": "Histórico",
+    "nota": 9.5,
+    "censura": 18,
+    "episodios": 48,
+    "imagem": "https://4kwallpapers.com/images/wallpapers/vinland-saga-2560x1440-14835.jpg",
+    "video": "https://www.youtube.com/embed/f8JrZ7Q_p-8",
+    "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3",
+    "resumo": "Thorfinn busca vingança em meio às guerras vikings.",
+    "curiosidade": "O anime é inspirado em eventos históricos reais."
+}
 ]

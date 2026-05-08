@@ -9,21 +9,22 @@
       href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD_B_FBELUHEsXCpvkMef4u1J1mCQrwqhQDg&s"
       type="image/png"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
       <div class="logo">🎌 Animatrix</div>
 
       <ul class="menu">
         <li><a href="#">Início</a></li>
-
-        <li><a href="#">Animes</a></li>
-
+        <li><a href="#catalogo">Animes</a></li>
         <li><a href="#">Top Rated</a></li>
-
         <li><a href="#">Favoritos</a></li>
-
-        <li><a href="#">Contato</a></li>
+        <li><a href="#sobre">Sobre</a></li>
       </ul>
 
       <div class="perfil">
@@ -34,18 +35,73 @@
       </div>
     </nav>
 
-    <h1>🎌 Animatrix V2</h1>
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Explore o Universo dos Animes</h1>
+
+        <p>
+          Descubra trailers, músicas, curiosidades e informações dos seus animes
+          favoritos.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary">🎬 Explorar</button>
+
+          <button class="btn-secondary">⭐ Favoritos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PESQUISA -->
+
+    <section class="pesquisa-container">
+      <input
+        type="text"
+        placeholder="🔍 Pesquisar anime..."
+        id="pesquisaAnime"
+      />
+    </section>
+
+    <!-- IDADE -->
+
     <div class="idade-container">
       <label>Sua idade:</label>
 
-      <input type="number" id="idadeUsuario" placeholder="Digite sua idade" />
+      <input type="number" id="idadeUsuario" placeholder="Ex: 14" />
     </div>
 
+    <!-- MAIN -->
+
     <main>
+      <h1 class="titulo-catalogo">🔥 Catálogo de Animes</h1>
+
       <div id="catalogo"></div>
     </main>
 
+    <!-- SOBRE -->
+
+    <section class="sobre" id="sobre">
+      <div class="sobre-content">
+        <h1>Sobre o Projeto</h1>
+
+        <p>
+          Ruan é foda, ele criou esse projeto incrível para mostrar seus
+          conhecimentos em JavaScript, HTML e CSS. O Animatrix V2 é um catálogo
+          interativo de animes que oferece trailers, músicas, curiosidades e
+          informações detalhadas sobre os animes mais populares. Com uma
+          interface moderna e fácil de usar, o Animatrix V2 é o lugar perfeito
+          para os fãs de anime explorarem e descobrirem novos títulos para
+          assistir.
+        </p>
+      </div>
+    </section>
+
     <!-- MODAL -->
+
     <div id="modal" class="modal">
       <div class="modal-content">
         <span class="fechar" onclick="fecharModal()"> X </span>
@@ -53,6 +109,8 @@
         <div id="conteudoModal"></div>
       </div>
     </div>
+
+    <!-- FOOTER -->
 
     <footer class="footer">
       <div class="footer-container">
@@ -72,13 +130,20 @@
         </div>
 
         <div class="footer-social">
-          <h3>Redes</h3>
+          <h3>Minhas Redes</h3>
 
           <div class="social-icons">
-            <a href="#">🔥</a>
-            <a href="#">🎮</a>
-            <a href="#">📺</a>
-            <a href="#">⭐</a>
+            <a href="https://github.com/Ruan-Marcelo" target="_blank" class="github">
+              <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://www.instagram.com/ruan.luzzz/" target="_blank" class="instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ruan-marcelo/" target="_blank" class="linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
           </div>
         </div>
       </div>

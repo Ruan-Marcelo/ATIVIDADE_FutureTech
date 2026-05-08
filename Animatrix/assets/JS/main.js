@@ -143,3 +143,61 @@ function mostrarNotificacao(texto){
 
 // INICIAR
 carregarAnimes();
+
+// ==========================
+// PESQUISA DE ANIMES
+// ==========================
+
+const inputPesquisa = document.getElementById("pesquisaAnime");
+
+inputPesquisa.addEventListener("input", () => {
+
+    const valor = inputPesquisa.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".card");
+
+    let encontrados = 0;
+
+    cards.forEach((card, index) => {
+
+        const anime = animes[index];
+
+        const nome = anime.nome.toLowerCase();
+
+        const genero = anime.genero.toLowerCase();
+
+        const encontrou =
+            nome.includes(valor) ||
+            genero.includes(valor);
+
+        card.style.display = encontrou ? "block" : "none";
+
+        if(encontrou){
+            encontrados++;
+        }
+
+    });
+
+    let mensagem = document.getElementById("mensagemNenhum");
+
+    if(!mensagem){
+
+        mensagem = document.createElement("h2");
+
+        mensagem.id = "mensagemNenhum";
+
+        mensagem.style.textAlign = "center";
+
+        mensagem.style.marginTop = "40px";
+
+        mensagem.style.color = "#FCA311";
+
+        document.querySelector("main").appendChild(mensagem);
+    }
+
+    mensagem.innerHTML =
+        encontrados === 0
+        ? "🚫 Nenhum anime encontrado."
+        : "";
+
+});

@@ -7,8 +7,6 @@
   padding:0;
   box-sizing:border-box;
 }
-
-
 /* =========================
    PALETA
 ========================= */
@@ -19,8 +17,6 @@
 #181818 -> Preto médio
 #EAEAEA -> Branco gelo
 */
-
-
 /* =========================
    BODY
 ========================= */
@@ -31,8 +27,6 @@ body{
   font-family:Arial, Helvetica, sans-serif;
   overflow-x:hidden;
 }
-
-
 /* =========================
    TITULOS
 ========================= */
@@ -597,29 +591,45 @@ audio{
 }
 
 
-/* ICONES */
+/* =========================
+   SOCIAL ICONS
+========================= */
 
 .social-icons{
 
   display:flex;
 
-  gap:15px;
+  gap:20px;
 
-  font-size:28px;
+  margin-top:15px;
 }
 
 .social-icons a{
 
+  width:55px;
+
+  height:55px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  border-radius:50%;
+
   text-decoration:none;
 
-  transition:0.3s;
+  font-size:24px;
+
+  color:#EAEAEA;
+
+  background:#181818;
+
+  border:2px solid transparent;
+
+  transition:0.4s;
 }
-
-.social-icons a:hover{
-
-  transform:scale(1.2) rotate(10deg);
-}
-
 
 /* FOOTER FINAL */
 
@@ -650,4 +660,223 @@ audio{
   iframe{
     height:250px;
   }
+}
+/* HERO */
+
+.hero{
+
+  height:90vh;
+
+  background:url("https://wallpapers.com/images/hd/anime-gaming-oo37ojjq85z45049.jpg");
+
+  background-size:cover;
+
+  background-position:center;
+
+  position:relative;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+}
+
+.hero-overlay{
+
+  position:absolute;
+
+  width:100%;
+
+  height:100%;
+
+  background:rgba(0,0,0,0.7);
+}
+
+.hero-content{
+
+  position:relative;
+
+  z-index:2;
+
+  max-width:800px;
+
+  padding:20px;
+}
+
+.hero-content h1{
+
+  font-size:60px;
+
+  margin-bottom:20px;
+
+  color:#FCA311;
+}
+
+.hero-content p{
+
+  font-size:20px;
+
+  line-height:1.7;
+
+  margin-bottom:30px;
+}
+
+
+/* BOTÕES */
+
+.hero-buttons{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+
+  padding:15px 30px;
+
+  border:none;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  transition:0.3s;
+}
+
+.btn-primary{
+
+  background:#FCA311;
+
+  color:#181818;
+}
+
+.btn-primary:hover{
+
+  transform:translateY(-5px);
+}
+
+.btn-secondary{
+
+  background:#2B2B2B;
+
+  color:#EAEAEA;
+
+  border:1px solid #FCA311;
+}
+
+.btn-secondary:hover{
+
+  background:#FCA311;
+
+  color:#181818;
+}
+
+/* PESQUISA */
+
+.pesquisa-container{
+
+  display:flex;
+
+  justify-content:center;
+
+  padding:20px;
+}
+
+.pesquisa-container input{
+
+  width:100%;
+
+  max-width:600px;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:15px;
+
+  background:#2B2B2B;
+
+  color:#EAEAEA;
+
+  font-size:16px;
+
+  outline:none;
+
+  border:1px solid #FCA311;
+}
+
+/* TITULO */
+
+.titulo-catalogo{
+
+  margin-top:30px;
+
+  margin-bottom:30px;
+}
+
+
+/* SOBRE */
+
+.sobre{
+
+  padding:80px 20px;
+
+  background:#2B2B2B;
+
+  margin-top:80px;
+}
+
+.sobre-content{
+
+  max-width:900px;
+
+  margin:auto;
+
+  text-align:center;
+}
+
+.sobre-content h1{
+
+  color:#FCA311;
+
+  margin-bottom:20px;
+}
+
+.sobre-content p{
+
+  line-height:1.8;
+
+  font-size:18px;
+
+  color:#D6D6D6;
+}
+
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  .hero-content h1{
+
+    font-size:40px;
+  }
+
+  .hero-content p{
+
+    font-size:16px;
+  }
+
 }
