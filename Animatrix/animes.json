@@ -1,0 +1,37 @@
+[
+    {
+        "nome": "Naruto",
+        "genero": "Ação",
+        "nota": 9.5,
+        "censura": 12,
+        "episodios": 220,
+
+        "imagem": "https://i.redd.it/d0wzvnk6gq061.jpg",
+
+        "video": "https://www.youtube.com/embed/QczGoCmX-pI",
+
+        "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+
+        "resumo": "Naruto é um ninja que deseja se tornar Hokage.",
+
+        "curiosidade": "O autor se inspirou em Dragon Ball."
+    },
+
+    {
+        "nome": "One Piece",
+        "genero": "Aventura",
+        "nota": 9.7,
+        "censura": 14,
+        "episodios": 1000,
+
+        "imagem": "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934.jpg",
+
+        "video": "https://www.youtube.com/embed/S8_YwFLCh4U",
+
+        "musica": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+
+        "resumo": "Luffy busca o One Piece.",
+
+        "curiosidade": "É o mangá mais vendido da história."
+    }
+]
