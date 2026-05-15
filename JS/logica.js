@@ -10,3 +10,11 @@ function soma(a, b){
     return a + b;
 }
 console.log(soma(5, 3));
+
+function somar(v1, v2){
+    return v1 + v2;
+}
+
+console.log("Pedido 1:", somar(10, 20));
+console.log("Pedido 2:", somar(15, 25));
+console.log("Pedido 3:", somar(20, 30));
