@@ -19,7 +19,7 @@ console.log("Pedido 1:", somar(10, 20));
 console.log("Pedido 2:", somar(15, 25));
 console.log("Pedido 3:", somar(20, 30));
 
-function realParaDolar(valorReal){
+function realParaDolar(valorReal, cotacaoDolar){
     var total = valorReal * cotacaoDolar;
     return total;
 }
