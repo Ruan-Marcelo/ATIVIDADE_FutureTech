@@ -38,3 +38,11 @@ function calcularMedia(n1, n2){
 
 var minhaMedia = calcularMedia(8, 6);
 console.log("A média é: " + minhaMedia);
+
+function calcularImposto(salario){
+    var imposto = salario * 0.15;
+    return imposto;
+}
+console.log(calcularImposto(1000));
+console.log(calcularImposto(1000));
+console.log(calcularImposto(1000));
