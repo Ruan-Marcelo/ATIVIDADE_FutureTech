@@ -18,14 +18,50 @@
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 20px;
+    }
+    .forms {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 </style>
 <body>
-        <button onclick="alertHello()"> Clique aqui </button>
+
+    <div class="forms">
+        <h1>Calculador de viagem</h1>
+
+        <label for="distancia">Distância (km):</label>
+        <input type="number" id="distancia" placeholder="Digite a distância">
+
+        <label for="velocidade">Velocidade (km/h):</label>
+        <input type="number" id="velocidade" placeholder="Digite a velocidade">
+
+        <label for="precoCombustivel">Preço do combustível (R$):</label>
+        <input type="number" id="precoCombustivel" placeholder="Digite o preço do combustível">
+
+         <button onclick="calcularViagem()"> Calcular Viagem </button>
+    </div>
+
+
+       
 
         <script>
-            function alertHello() {
-                alert("Olá, seja bem-vindo(a)!");
+            function calcularViagem() {
+                var distancia = document.getElementById("distancia").value;
+                var velocidade = document.getElementById("velocidade").value;
+                var precoCombustivel = document.getElementById("precoCombustivel").value;
+                var tempo = distancia / velocidade;
+                var custoCombustivel = (distancia / 10) * precoCombustivel; 
+                alert("O tempo da viagem é: " + tempo + " horas");
+                alert("O custo do combustível é: R$ " + custoCombustivel.toFixed(2));
             }
         </script>
 </body>
