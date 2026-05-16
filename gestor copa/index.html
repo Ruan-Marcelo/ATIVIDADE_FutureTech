@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gestor de Figurinhas - Copa 2026</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/455/42/551/brasil-footballers-neymar-ronaldinho-wallpaper-preview.jpg");
+
+        background-repeat: no-repeat;
+        background-size: cover; /* Faz a imagem cobrir toda a tela */
+        background-position: center; /* Centraliza a imagem */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 520px;
+        background: rgba(20, 20, 20, 0.88);
+        border: 2px solid #7b2cff;
+        border-radius: 25px;
+        padding: 35px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 25px rgba(123, 44, 255, 0.45);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 34px;
+        color: #bb86fc;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 18px;
+        color: #d6b5ff;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      label {
+        color: #d8b8ff;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      input {
+        padding: 14px;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        background: #2a2a2a;
+        color: white;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: #7b2cff;
+        box-shadow: 0 0 12px #7b2cff;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #7b2cff, #a855f7);
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 20px #7b2cff;
+      }
+
+      .resultado {
+        margin-top: 30px;
+        background: rgba(24, 24, 24, 0.92);
+        border-left: 5px solid #7b2cff;
+        padding: 22px;
+        border-radius: 15px;
+        line-height: 1.9;
+        font-size: 17px;
+        color: #f1f1f1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Gestor de Figurinhas</h1>
+      <h2>Copa do Mundo 2026</h2>
+
+      <div class="card">
+        <label>Total de Figurinhas do Álbum</label>
+        <input type="number" id="totalFigurinhas" placeholder="Ex: 670" />
+
+        <label>Figurinhas Coladas</label>
+        <input type="number" id="figurinhasColadas" placeholder="Ex: 350" />
+
+        <label>Figurinhas Repetidas</label>
+        <input type="number" id="figurinhasRepetidas" placeholder="Ex: 40" />
+
+        <button onclick="atualizarPainel()">Calcular Progresso</button>
+      </div>
+
+      <div class="resultado" id="resultado">
+        Preencha os dados para ver o progresso do álbum.
+      </div>
+    </div>
+
+    <script>
+      function calcularPorcentagem(total, coladas) {
+        let porcentagem = (coladas / total) * 100;
+
+        return porcentagem.toFixed(1);
+      }
+
+      function calcularFaltantes(total, coladas) {
+        let faltantes = total - coladas;
+
+        return faltantes;
+      }
+
+      function gerarStatusMensagem(porcentagem) {
+        if (porcentagem < 50) {
+          return " O álbum está no início, bora trocar!";
+        } else if (porcentagem >= 50 && porcentagem < 100) {
+          return " Falta pouco! Mais da metade já foi!";
+        } else {
+          return " ÁLBUM COMPLETO! Você é um mestre colecionador!";
+        }
+      }
+
+      function atualizarPainel() {
+        let total = Number(document.getElementById("totalFigurinhas").value);
+
+        let coladas = Number(
+          document.getElementById("figurinhasColadas").value,
+        );
+
+        let repetidas = Number(
+          document.getElementById("figurinhasRepetidas").value,
+        );
+
+        let porcentagem = calcularPorcentagem(total, coladas);
+
+        let faltantes = calcularFaltantes(total, coladas);
+
+        let mensagem = gerarStatusMensagem(porcentagem);
+
+        document.getElementById("resultado").innerHTML = `
+
+        <strong> Total do Álbum:</strong>
+        ${total} figurinhas
+        <br><br>
+
+        <strong> Figurinhas Coladas:</strong>
+        ${coladas}
+        <br><br>
+
+        <strong> Figurinhas Repetidas:</strong>
+        ${repetidas}
+        <br><br>
+
+        <strong> Progresso:</strong>
+        ${porcentagem}%
+        <br><br>
+
+        <strong> Faltam:</strong>
+        ${faltantes} figurinhas
+        <br><br>
+
+        <strong> Status:</strong>
+        ${mensagem}
+
+      `;
+      }
+    </script>
+  </body>
+</html>
