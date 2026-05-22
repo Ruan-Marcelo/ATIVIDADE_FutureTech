@@ -24,3 +24,9 @@ console.log(`Marca: ${meuCarro.marca}`);
 console.log(`Modelo: ${meuCarro.modelo}`);
 console.log(`Ano: ${meuCarro.ano}`);
 console.groupEnd();
+
+const carros = [meuCarro, outroCarro];
+carros.forEach(carro => {
+    console.log(`Marca: ${carro.marca}, Modelo: ${carro.modelo}, Ano: ${carro.ano}`);
+});
+
