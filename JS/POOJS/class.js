@@ -32,5 +32,16 @@ carros.forEach(carro => {
 
 const carro = [
     { marca: "Toyota", modelo: "Corolla", ano: 2020 },
-    { marca: "Honda", modelo: "Civic", ano: 2019 }
+    { 
+        marca: "Honda", 
+        modelo: "Civic",
+         ano: 2019,
+        buzina: function() {
+            return "Buzinando...";
+        },
+        apresentar: function() {
+            return `Este é um ${this.marca} ${this.modelo} do ano ${this.ano}.`;
+        }           
+    }
+
 ]
