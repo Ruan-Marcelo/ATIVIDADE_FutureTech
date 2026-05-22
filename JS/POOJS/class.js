@@ -8,3 +8,13 @@ class Carro{
         console.log("Buzinando...");
     }
 }
+
+const meuCarro = new Carro("Toyota", "Corolla", 2020);
+console.log(meuCarro.marca); // Output: Toyota
+
+const outroCarro = new Carro("Honda", "Civic", 2019);
+console.log(outroCarro.modelo); // Output: Civic
+
+meuCarro.buzinar(); // Output: Buzinando...
+outroCarro.buzinar(); // Output: Buzinando...
+
