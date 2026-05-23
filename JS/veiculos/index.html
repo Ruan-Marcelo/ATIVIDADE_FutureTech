@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> Ruan Marcelo</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: #0f172a;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header{
+      position: relative;
+      height: 350px;
+
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Renault_Kwid_Iconic.jpg');
+
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+    }
+
+    .conteudo-header{
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .conteudo-header h1{
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .conteudo-header p{
+      font-size: 20px;
+      color: #cbd5e1;
+    }
+
+    .container{
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    .painel-formulario{
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+    }
+
+    .painel-formulario h2{
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    input{
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 16px;
+      background: #334155;
+      color: white;
+    }
+
+    input::placeholder{
+      color: #cbd5e1;
+    }
+
+    .preview-box{
+      background: #334155;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .preview-box strong{
+      color: #38bdf8;
+    }
+
+    button{
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+
+      background: linear-gradient(90deg, #2563eb, #38bdf8);
+
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover{
+      transform: scale(1.02);
+    }
+
+    .titulo-patio{
+      margin-bottom: 20px;
+      font-size: 35px;
+    }
+
+    #patio{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .carro{
+      background: #1e293b;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .carro:hover{
+      transform: translateY(-8px);
+    }
+
+    .carro img{
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .carro-info{
+      padding: 20px;
+    }
+
+    .carro-info h3{
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .carro-info p{
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    footer{
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      color: #94a3b8;
+      margin-top: 40px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <header>
+
+    <div class="overlay"></div>
+
+    <div class="conteudo-header">
+      <h1>COntrole Digital de viuculos</h1>
+      <p>Projeto desenvolvido por Ruan Marcelo</p>
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="painel-formulario">
+
+      <h2>Fabricar Novo Veículo</h2>
+
+      <input
+        type="text"
+        id="marca"
+        placeholder="Digite a marca"
+        onkeyup="atualizarPreview()"
+      >
+
+      <input
+        type="text"
+        id="modelo"
+        placeholder="Digite o modelo"
+      >
+
+      <input
+        type="number"
+        id="ano"
+        placeholder="Digite o ano"
+      >
+
+      <div class="preview-box">
+        <span>Preview da Marca:</span>
+        <strong id="preview">---</strong>
+      </div>
+
+      <button onclick="fabricarCarro()">
+        Fabricar Carro
+      </button>
+
+    </section>
+
+    <section>
+
+      <h2 class="titulo-patio">Pátio de Veículos</h2>
+
+      <div id="patio"></div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 - Desenvolvido por Ruan Marcelo</p>
+  </footer>
+
+  <script>
+
+    class Carro {
+
+      constructor(marca, modelo, ano){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+      }
+
+      buzinar(){
+        alert(`${this.modelo}: Biiiiiiiii`);
+      }
+
+    }
+
+    function atualizarPreview(){
+
+      const marca = document.getElementById("marca").value;
+
+      document.getElementById("preview").innerText = marca || "---";
+
+    }
+
+    function fabricarCarro(){
+
+      const marca = document.getElementById("marca").value;
+
+      const modelo = document.getElementById("modelo").value;
+
+      const ano = Number(document.getElementById("ano").value);
+
+      if(marca === "" || modelo === "" || ano === ""){
+
+        alert("Preencha todos os campos.");
+
+        return;
+      }
+
+      const novoCarro = new Carro(marca, modelo, ano);
+
+      const patio = document.getElementById("patio");
+
+      const card = document.createElement("div");
+
+      card.classList.add("carro");
+
+      card.innerHTML = `
+        <img src="https://www.minutoseguros.com.br/blog/wp-content/uploads/2017/08/renault-kwid.jpg">
+
+        <div class="carro-info">
+
+          <h3>${novoCarro.marca}</h3>
+
+          <p><strong>Modelo:</strong> ${novoCarro.modelo}</p>
+
+          <p><strong>Ano:</strong> ${novoCarro.ano}</p>
+
+          <p><strong>Desenvolvido por:</strong> Ruan Marcelo</p>
+
+        </div>
+      `;
+
+      card.onclick = function(){
+
+        novoCarro.buzinar();
+
+      }
+
+      card.onmouseover = function(){
+
+        card.style.background = "#334155";
+
+      }
+
+      card.onmouseout = function(){
+
+        card.style.background = "#1e293b";
+
+      }
+
+      patio.appendChild(card);
+
+      document.getElementById("marca").value = "";
+
+      document.getElementById("modelo").value = "";
+
+      document.getElementById("ano").value = "";
+
+      document.getElementById("preview").innerText = "---";
+
+    }
+
+  </script>
+
+</body>
+</html>
