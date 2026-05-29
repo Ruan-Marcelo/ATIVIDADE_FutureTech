@@ -34,3 +34,11 @@ function escolherCor(){
             alert('Cor não reconhecida! Tente vermelho, verde ou azul.');
     }
 }
+
+const dropdown = document.getElementById('anoDropdown');
+for(let i = 2023; i >= 1900; i--){
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i;
+    dropdown.appendChild(option);
+}

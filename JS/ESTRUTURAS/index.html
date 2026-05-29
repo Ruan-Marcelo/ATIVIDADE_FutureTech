@@ -46,6 +46,22 @@
         padding: 10px;
         font-size: 16px;
     }
+    .dataNasc {
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+    }
+    #anoDropdown {
+        padding: 10px;
+        font-size: 16px;
+    }
+    select {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-left: 10px;
+        border-radius: 5px;
+    }
 </style>
 <body>
     <div class="container">
@@ -64,6 +80,11 @@
         </select>
         <button onclick="escolherCor()">Escolher Cor</button>
         <p id="resultado2"></p>
+    </div>
+
+    <div class="dataNasc">
+        <label for="dataNasc">Digite sua data de nascimento:</label>
+        <select id="anoDropdown"></select>
     </div>
 
     <script src="app.js"></script>
