@@ -3,113 +3,111 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IoT Sentinel Pro</title>
+    <title>Painel de Sensores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <aside class="sidebar">
-      <div>
-        <p class="eyebrow">Planta 04</p>
-        <h1>IoT Sentinel Pro</h1>
-        <p class="intro">
-          Cadastro e leitura rapida de sensores industriais. Os dados ficam
-          salvos no navegador.
-        </p>
-      </div>
-
-      <form class="form" onsubmit="return false">
-        <label for="nomeSensor">Nome do sensor</label>
-        <input
-          id="nomeSensor"
-          type="text"
-          placeholder="Ex: Forno 01"
-          onkeyup="preVisualizarNome()"
-          onblur="corrigirNome()"
-        />
-
-        <label for="tipoSensor">Tipo</label>
-        <select id="tipoSensor" onblur="corrigirTipo()">
-          <option value="TEMPERATURA">Temperatura</option>
-          <option value="PRESSAO">Pressao</option>
-          <option value="UMIDADE">Umidade</option>
-        </select>
-
-        <label for="valorSensor">Valor medido</label>
-        <input
-          id="valorSensor"
-          type="number"
-          step="0.01"
-          placeholder="Ex: 45"
-          onblur="corrigirValor()"
-        />
-
-        <button type="button" onclick="adicionarSensor()">Adicionar sensor</button>
-        <button class="ghost" type="button" onclick="carregarExemplos()">
-          Usar dados de teste
-        </button>
-        <button class="ghost danger" type="button" onclick="limparSensores()">
-          Limpar painel
-        </button>
-      </form>
-
-      <p class="preview" id="previewNome">Aguardando cadastro...</p>
-    </aside>
-
-    <main class="dashboard">
-      <header class="topbar">
+    <main class="wrap">
+      <header class="header">
         <div>
-          <p class="eyebrow">Telemetria em tempo real</p>
-          <h2>Monitoramento de ativos</h2>
+          <p class="kicker">Planta 04 / Telemetria</p>
+          <h1>Painel de sensores</h1>
         </div>
-        <button class="theme" type="button" onclick="alternarTema()">
-          Dark mode
-        </button>
+        <button class="small-button" type="button" onclick="alternarTema()">Tema</button>
       </header>
 
-      <section class="status-row" aria-label="Resumo operacional">
-        <article>
-          <span>Total</span>
-          <strong id="totalSensores">0</strong>
-        </article>
-        <article>
-          <span>Normal</span>
-          <strong id="totalNormal">0</strong>
-        </article>
-        <article class="critical">
-          <span>Critico</span>
-          <strong id="totalCritico">0</strong>
-        </article>
-      </section>
+      <section class="entry panel" aria-label="Cadastro de sensor">
+        <form class="form" onsubmit="return false">
+          <div>
+            <label for="nomeSensor">Sensor</label>
+            <input
+              id="nomeSensor"
+              type="text"
+              placeholder="Forno 01"
+              onkeyup="preVisualizarNome()"
+              onblur="corrigirNome()"
+            />
+          </div>
 
-      <section class="panel chart-panel">
-        <div class="panel-title">
-          <h3>Media por categoria</h3>
-          <span>Temperatura, pressao e umidade</span>
-        </div>
-        <canvas id="graficoMedias" height="130"></canvas>
-      </section>
+          <div>
+            <label for="tipoSensor">Tipo</label>
+            <select id="tipoSensor" onblur="corrigirTipo()">
+              <option value="TEMPERATURA">Temperatura</option>
+              <option value="PRESSAO">Pressao</option>
+              <option value="UMIDADE">Umidade</option>
+            </select>
+          </div>
 
-      <section class="panel">
-        <div class="panel-title">
-          <h3>Sensores cadastrados</h3>
-          <span id="filtroResumo">Todos os dispositivos</span>
-        </div>
-        <div class="filters">
-          <button type="button" onclick="filtrarCategoria('TODOS')">Todos</button>
-          <button type="button" onclick="filtrarCategoria('TEMPERATURA')">
-            Temperatura
+          <div>
+            <label for="valorSensor">Leitura</label>
+            <input
+              id="valorSensor"
+              type="number"
+              step="0.01"
+              placeholder="45"
+              onblur="corrigirValor()"
+            />
+          </div>
+
+          <button type="button" onclick="adicionarSensor()">Adicionar</button>
+        </form>
+        <div class="entry-actions">
+          <button class="text-button" type="button" onclick="carregarExemplos()">
+            Dados de teste
           </button>
-          <button type="button" onclick="filtrarCategoria('PRESSAO')">Pressao</button>
-          <button type="button" onclick="filtrarCategoria('UMIDADE')">Umidade</button>
+          <button class="text-button danger" type="button" onclick="limparSensores()">
+            Limpar
+          </button>
         </div>
-        <div class="cards-grid" id="cardsSensores"></div>
+        <p class="preview" id="previewNome">Aguardando cadastro...</p>
+      </section>
+
+      <section class="grid">
+        <div class="left-col">
+          <section class="numbers panel" aria-label="Resumo operacional">
+            <article>
+              <span>Total</span>
+              <strong id="totalSensores">0</strong>
+            </article>
+            <article>
+              <span>Normal</span>
+              <strong id="totalNormal">0</strong>
+            </article>
+            <article>
+              <span>Critico</span>
+              <strong id="totalCritico">0</strong>
+            </article>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Media por tipo</h2>
+              <span>Chart.js</span>
+            </div>
+            <canvas id="graficoMedias" height="150"></canvas>
+          </section>
+        </div>
+
+        <section class="panel list-panel">
+          <div class="panel-head">
+            <h2>Sensores</h2>
+            <span id="filtroResumo">Todos</span>
+          </div>
+          <div class="filters">
+            <button type="button" onclick="filtrarCategoria('TODOS')">Todos</button>
+            <button type="button" onclick="filtrarCategoria('TEMPERATURA')">Temp.</button>
+            <button type="button" onclick="filtrarCategoria('PRESSAO')">Pressao</button>
+            <button type="button" onclick="filtrarCategoria('UMIDADE')">Umidade</button>
+          </div>
+          <div class="cards-grid" id="cardsSensores"></div>
+        </section>
       </section>
     </main>
 

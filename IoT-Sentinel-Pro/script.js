@@ -24,15 +24,15 @@ class Sensor {
 
   status() {
     if (this.tipo === "TEMPERATURA") {
-      return this.valor > 50 ? "CRÍTICO" : "NORMAL";
+      return this.valor > 50 ? "CRITICO" : "NORMAL";
     }
 
     if (this.tipo === "PRESSAO") {
-      return this.valor > 100 ? "CRÍTICO" : "NORMAL";
+      return this.valor > 100 ? "CRITICO" : "NORMAL";
     }
 
     if (this.tipo === "UMIDADE") {
-      return this.valor < 30 || this.valor > 80 ? "CRÍTICO" : "NORMAL";
+      return this.valor < 30 || this.valor > 80 ? "CRITICO" : "NORMAL";
     }
 
     return "NORMAL";
@@ -40,7 +40,7 @@ class Sensor {
 
   unidade() {
     const unidades = {
-      TEMPERATURA: "°C",
+      TEMPERATURA: " C",
       PRESSAO: "Bar",
       UMIDADE: "%",
     };
@@ -124,7 +124,7 @@ function calcularMediaPorTipo(tipo) {
 }
 
 function atualizarResumo() {
-  const criticos = sensores.filter((sensor) => sensor.status() === "CRÍTICO");
+  const criticos = sensores.filter((sensor) => sensor.status() === "CRITICO");
   const normais = sensores.filter((sensor) => sensor.status() === "NORMAL");
 
   totalSensores.textContent = sensores.length;
@@ -134,16 +134,14 @@ function atualizarResumo() {
 
 function montarCard(sensor) {
   const status = sensor.status();
-  const critico = status === "CRÍTICO";
+  const critico = status === "CRITICO";
 
   return `
     <article class="sensor-card ${critico ? "critico" : ""}">
-      <div class="sensor-head">
-        <div class="sensor-icon">${sensor.icone()}</div>
-        <div>
-          <h4>${sensor.nome}</h4>
-          <p>${sensor.tipo} - ${sensor.criadoEm}</p>
-        </div>
+      <div class="sensor-icon">${sensor.icone()}</div>
+      <div>
+        <h4>${sensor.nome}</h4>
+        <p>${sensor.tipo} / ${sensor.criadoEm}</p>
       </div>
       <div class="sensor-value">
         <strong>${sensor.valor}${sensor.unidade()}</strong>
@@ -186,10 +184,10 @@ function montarGrafico() {
         labels: ["Temperatura", "Pressao", "Umidade"],
         datasets: [
           {
-            label: "Media operacional",
+            label: "Media",
             data: medias,
-            backgroundColor: ["#f97316", "#2563eb", "#14b8a6"],
-            borderRadius: 6,
+            backgroundColor: ["#202124", "#6f736f", "#9b9b8f"],
+            borderRadius: 2,
           },
         ],
       },
@@ -223,7 +221,7 @@ function atualizarPainel() {
 function filtrarCategoria(categoria) {
   filtroAtual = categoria.trim().toUpperCase();
   filtroResumo.textContent =
-    filtroAtual === "TODOS" ? "Todos os dispositivos" : `Filtro: ${filtroAtual}`;
+    filtroAtual === "TODOS" ? "Todos" : filtroAtual;
   renderizarCards();
 }
 
