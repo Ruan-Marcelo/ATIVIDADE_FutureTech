@@ -2,261 +2,538 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>Portal de Exercícios</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://static.thenounproject.com/png/34322-200.png"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Atividades</title>
     <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fb;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #5f6b7a;
+        --brand: #0f5f99;
+        --brand-dark: #0b416b;
+        --line: #d9e2ec;
+        --shadow: 0 12px 32px rgba(31, 41, 55, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        overflow-x: hidden;
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        min-height: 100vh;
         margin: 0;
-        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
       }
 
-      header {
-        background-color: #1f4e79;
-        color: white;
-        padding: 20px;
-      }
-
-      main {
-        padding: 40px;
-      }
-
-      .links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-top: 30px;
-      }
-
-      .card {
-        background: white;
-        padding: 20px;
-        width: 200px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        transition: 0.2s;
-      }
-
-      .card:hover {
-        transform: scale(1.05);
+      body.dark {
+        color-scheme: dark;
+        --bg: #111827;
+        --panel: #1f2937;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --brand: #38bdf8;
+        --brand-dark: #7dd3fc;
+        --line: #374151;
+        --shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
       }
 
       a {
+        color: inherit;
         text-decoration: none;
-        color: #1f4e79;
-        font-weight: bold;
       }
 
-      footer {
-        background: #1f4e79;
-        color: white;
-        padding: 15px;
-        margin-top: 40px;
-      }
-      .redes {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-      }
-      .redes:hover {
-        color: black;
-      }
-      .dark {
-        background-color: #121212;
-        color: white;
+      .page-header {
+        background: linear-gradient(135deg, #073b63, #0f5f99 55%, #13856f);
+        color: #ffffff;
+        padding: 48px 24px 42px;
       }
 
-      .dark header,
-      .dark footer {
-        background-color: #000;
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
       }
 
-      .dark .card {
-        background: #1e1e1e;
-        color: white;
+      .hero {
+        display: grid;
+        gap: 18px;
       }
 
-      .dark a {
-        color: #4da6ff;
+      .hero h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 26px;
+      }
+
+      .search {
+        flex: 1 1 280px;
+        max-width: 520px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 8px;
+        padding: 0 14px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        font: inherit;
+        outline: none;
+      }
+
+      .search::placeholder {
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .theme-button {
+        min-height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        padding: 0 16px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      main {
+        padding: 32px 0 46px;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+
+      .summary-item,
+      .project-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .summary-item {
+        padding: 18px;
+      }
+
+      .summary-item strong {
+        display: block;
+        color: var(--brand-dark);
+        font-size: 1.6rem;
+        line-height: 1;
+      }
+
+      .summary-item span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 34px;
+      }
+
+      .section-header {
+        display: flex;
+        gap: 12px;
+        align-items: end;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 10px;
+        margin-bottom: 16px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+
+      .section-header span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+      }
+
+      .project-card {
+        display: flex;
+        min-height: 150px;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+        transition:
+          transform 0.18s ease,
+          border-color 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .project-card:hover,
+      .project-card:focus-within {
+        transform: translateY(-3px);
+        border-color: var(--brand);
+      }
+
+      .project-card h3 {
+        margin: 0;
+        color: var(--brand-dark);
+        font-size: 1.05rem;
+      }
+
+      .project-card p {
+        flex: 1;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .project-card a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        min-height: 38px;
+        border-radius: 8px;
+        padding: 0 13px;
+        background: var(--brand);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .empty-state {
+        display: none;
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+        padding: 28px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .page-footer {
+        border-top: 1px solid var(--line);
+        padding: 24px 0;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .page-footer a {
+        color: var(--brand-dark);
+        font-weight: 700;
+      }
+
+      @media (max-width: 640px) {
+        .page-header {
+          padding-top: 34px;
+        }
+
+        .toolbar {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .search,
+        .theme-button {
+          width: 100%;
+          max-width: none;
+        }
+
+        .section-header {
+          align-items: start;
+          flex-direction: column;
+        }
       }
     </style>
   </head>
-
   <body>
-    <header>
-      <h1>Portal de Exercícios</h1>
-      <p><p id="mensagem"></p>
-              Página principal para acessar todos os exercícios</p>
+    <header class="page-header">
+      <div class="container hero">
+        <h1>Portal de Atividades</h1>
+        <p id="mensagem">
+          Pagina principal para acessar os exercicios, aulas e projetos criados
+          durante o curso de Analise e Desenvolvimento de Sistemas.
+        </p>
+
+        <div class="toolbar" aria-label="Ferramentas do portal">
+          <input
+            class="search"
+            id="search"
+            type="search"
+            placeholder="Buscar por nome, tema ou tecnologia"
+            autocomplete="off"
+          />
+          <button class="theme-button" id="themeButton" type="button">
+            Modo escuro
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <h2>Lista de Exercícios</h2>
-      <div>
-        <input
-          type="text"
-          id="search"
-          placeholder="Buscar exercício..."
-          style="
-            padding: 10px;
-            width: 250px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-          "
-        />
-        <button
-          onclick="toggleDarkMode()"
-          style="
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-          "
-        >
-          Modo Escuro
-        </button>
+    <main class="container">
+      <section class="summary" aria-label="Resumo do repositorio">
+        <div class="summary-item">
+          <strong id="totalProjetos">0</strong>
+          <span>links cadastrados</span>
+        </div>
+        <div class="summary-item">
+          <strong>HTML</strong>
+          <span>estrutura das atividades</span>
+        </div>
+        <div class="summary-item">
+          <strong>CSS</strong>
+          <span>layout e responsividade</span>
+        </div>
+        <div class="summary-item">
+          <strong>JS</strong>
+          <span>interatividade e logica</span>
+        </div>
+      </section>
+
+      <div id="projectSections">
+        <section class="section" data-section>
+          <div class="section-header">
+            <h2>Projetos principais</h2>
+            <span>Interfaces completas e trabalhos maiores</span>
+          </div>
+          <div class="project-grid">
+            <article class="project-card" data-project>
+              <h3>Dashboard Industrial SCADA</h3>
+              <p>Painel de monitoramento industrial com login e controle.</p>
+              <a href="./Dashboard-Industrial-SCADA/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Animatrix V2</h3>
+              <p>Catalogo de animes com conteudo carregado por JavaScript.</p>
+              <a href="./Animatrix/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Portal de Identidade Digital</h3>
+              <p>Pagina de perfil digital com apresentacao pessoal.</p>
+              <a href="./Portal%20de%20Identidade%20Digital/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Gestor de Figurinhas</h3>
+              <p>Controle de figurinhas para a Copa do Mundo 2026.</p>
+              <a href="./gestor%20copa/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Controle de Veiculos</h3>
+              <p>Exercicio de JavaScript orientado a objetos aplicado a veiculos.</p>
+              <a href="./JS/veiculos/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Sky Track</h3>
+              <p>Projeto publicado no GitHub Pages.</p>
+              <a href="https://bytecorerp.github.io/SkyTrack_Project/" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" data-section>
+          <div class="section-header">
+            <h2>HTML e CSS</h2>
+            <span>Exercicios de estrutura, estilo e layout</span>
+          </div>
+          <div class="project-grid">
+            <article class="project-card" data-project>
+              <h3>Graduacao SENAI</h3>
+              <p>Primeira pagina HTML sobre o curso de ADS.</p>
+              <a href="./aula_html1/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Critica de Cinema</h3>
+              <p>Exercicio de aula com conteudo editorial.</p>
+              <a href="./aula_html1/aula2.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>TechNews Brasil</h3>
+              <p>Pagina de noticias criada como teste de HTML.</p>
+              <a href="./aula_html1/teste.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Formulario de Cadastro</h3>
+              <p>Atividade de formularios em HTML.</p>
+              <a href="./aula_html2/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Tabela de Equipamentos</h3>
+              <p>Exercicio de tabelas com lista de equipamentos.</p>
+              <a href="./aula_html2/tabela.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Card de Identidade</h3>
+              <p>Atividade CSS com card visual e imagens.</p>
+              <a href="./att-20-03/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Curriculo</h3>
+              <p>Curriculo pessoal estilizado com HTML e CSS.</p>
+              <a href="./curriculo/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Projeto de Perfil</h3>
+              <p>Pagina de apresentacao pessoal.</p>
+              <a href="./projeto-perfil/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" data-section>
+          <div class="section-header">
+            <h2>Trabalhos e estudos</h2>
+            <span>Atividades tematicas e projetos de pesquisa</span>
+          </div>
+          <div class="project-grid">
+            <article class="project-card" data-project>
+              <h3>FutureTech</h3>
+              <p>Projeto sobre tecnologia sustentavel.</p>
+              <a href="./FutureTech/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>FutureTech Estilizado</h3>
+              <p>Versao com layout visual aprimorado.</p>
+              <a href="./estilizado/indexx_Estilizada.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Portal SENAI Ribeirao Preto</h3>
+              <p>Atividade pratica com midias e pagina de matricula.</p>
+              <a href="./Atividade-Pr%C3%A1tica-Portal-SENAI-Ribeir%C3%A3o-Preto-RuanMarcelo/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>TechNews Industria 4.0</h3>
+              <p>Portal de noticias com audio, video e formulario.</p>
+              <a href="./projeto-portal/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Monitoramento de Almoxarifado</h3>
+              <p>Registro de materiais para atividade de monitoramento.</p>
+              <a href="./Atividade%203/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Arvore DNS</h3>
+              <p>Estudo visual sobre a hierarquia do DNS.</p>
+              <a href="./arvoreDNS.html" target="_blank" rel="noopener noreferrer">Abrir estudo</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Jornada da Requisicao</h3>
+              <p>Material explicativo sobre fluxo de requisicoes.</p>
+              <a href="./Jornada.html" target="_blank" rel="noopener noreferrer">Abrir estudo</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" data-section>
+          <div class="section-header">
+            <h2>JavaScript</h2>
+            <span>Aulas, logica e interatividade</span>
+          </div>
+          <div class="project-grid">
+            <article class="project-card" data-project>
+              <h3>Aula 1 de JavaScript</h3>
+              <p>Introducao a scripts e manipulacao de pagina.</p>
+              <a href="./ADS%20-%20JavaScripts/index.html" target="_blank" rel="noopener noreferrer">Abrir aula</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Painel do Desenvolvedor</h3>
+              <p>Atividade com estrutura, estilo e script separados.</p>
+              <a href="./ADS%20-%20JavaScripts/atividade1/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Calculador de Viagem</h3>
+              <p>Exercicio pratico de entrada, calculo e exibicao.</p>
+              <a href="./JS/exercicio.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Estruturas Condicionais</h3>
+              <p>Exercicio de if, else e tomada de decisao.</p>
+              <a href="./JS/ESTRUTURAS/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+          </div>
+        </section>
       </div>
 
-      <div class="links">
-        <div class="card" data-nome="exercicio 1">
-          <a href="aula_html1/index.html" target="_blank">Exercício 1</a>
-        </div>
-        <div class="card" data-nome="exercicio 2">
-          <a href="aula_html1/aula2.html" target="_blank">Exercício 2</a>
-        </div>
-        <div class="card" data-nome="curriculo">
-          <a href="curriculo/index.html" target="_blank">Curriculo</a>
-        </div>
-        <div class="card" data-nome="teste HTML">
-          <a href="aula_html1/teste.html" target="_blank">Teste HTML</a>
-        </div>
-        <div class="card" data-nome="forms">
-          <a href="aula_html2/index.html" target="_blank">Forms</a>
-        </div>
-
-        <div class="card" data-nome="future Tech">
-          <a href="FutureTech/index.html" target="_blank">Future Tech</a>
-        </div>
-        <div class="card" data-nome="atividade Portal Senai">
-          <a
-            href="Atividade-Prática-Portal-SENAI-Ribeirão-Preto-RuanMarcelo/index.html"
-            target="_blank"
-            >Atividade Portal Senai</a
-          >
-        </div>
-
-        <div class="card" data-nome="future tech estilizado">
-          <a href="estilizado/indexx_Estilizada.html" target="_blank"
-            >Future Tech estilizado</a
-          >
-        </div>
-
-        <div class="card" data-nome="exercicio 3">
-          <a href="Atividade 3/index.html" target="_blank">Exercício 3</a>
-        </div>
-
-        <div class="card" data-nome="avaliação html">
-          <a href="projeto-portal/index.html" target="_blank"
-            >AVALIAÇÃO DE HTML</a
-          >
-        </div>
-        <div class="card" data-nome="atividade css 1">
-          <a href="./att-20-03/index.html" target="_blank">ATIVIDADE CSS 1</a>
-        </div>
-        <div class="card" data-nome="projeto perfil">
-          <a href="./projeto-perfil/index.html" target="_blank">Projeto de Perfil</a>
-        </div>
-        <div class="card" data-nome="portal de identidade">
-          <a href="./Portal de Identidade Digital/index.html" target="_blank">Portal de identidade</a>
-        </div>
-        <div class="card" data-nome="portal de identidade">
-          <a href="https://bytecorerp.github.io/SkyTrack_Project/" target="_blank">Sky Track</a>
-        </div>
-        <div class="card" data-nome="AnimaTrix">
-          <a href="./Animatrix/index.html" target="_blank">AnimaTrix V2</a>
-        </div>
-        <div class="card" data-nome="AnimaTrix">
-          <a href="./gestor copa/index.html" target="_blank">Figurinhas da copa</a>
-        </div>
-        <div class="card" data-nome="AnimaTrix">
-          <a href="./JS/veiculos/index.html" target="_blank">Veiculos</a>
-        </div>
-        <div class="card" data-nome="AnimaTrix">
-          <a href="./Dashboard-Industrial-SCADA/index.html" target="_blank">Dashboard Industrial SCADA</a>
-        </div>
-      </div>
+      <p class="empty-state" id="emptyState">
+        Nenhum projeto encontrado para a busca informada.
+      </p>
     </main>
 
-    <footer>
-      <p>&copy; 2026 - Portal de Exercícios - Ruan Marcelo Ramacioti Luz</p>
-      <p>
-        <a
-          href="http://zruanzito.com.br"
-          class="redes"
-          target="_blank"
-          rel="noopener noreferrer"
-          >zruanzito.com.br</a
-        >
-      </p>
-      <a
-        href="https://github.com/Ruan-Marcelo"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          fill="currentColor"
-          class="bi bi-github"
-          viewBox="0 0 16 16"
-          color="white"
-        >
-          <path
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
-          />
-        </svg>
-      </a>
+    <footer class="page-footer">
+      <div class="container">
+        <p>2026 - Portal de Atividades - Ruan Marcelo Ramacioti Luz</p>
+        <p>
+          <a href="https://github.com/Ruan-Marcelo" target="_blank" rel="noopener noreferrer">GitHub</a>
+          |
+          <a href="http://zruanzito.com.br" target="_blank" rel="noopener noreferrer">zruanzito.com.br</a>
+        </p>
+      </div>
     </footer>
 
     <script>
       const searchInput = document.getElementById("search");
-      const cards = document.querySelectorAll(".card");
+      const themeButton = document.getElementById("themeButton");
+      const cards = Array.from(document.querySelectorAll("[data-project]"));
+      const sections = Array.from(document.querySelectorAll("[data-section]"));
+      const emptyState = document.getElementById("emptyState");
+      const totalProjetos = document.getElementById("totalProjetos");
+      const mensagem = document.getElementById("mensagem");
 
-      searchInput.addEventListener("keyup", function () {
-        const filtro = searchInput.value.toLowerCase();
+      totalProjetos.textContent = cards.length;
+
+      const hora = new Date().getHours();
+      const saudacao = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
+      mensagem.textContent = `${saudacao}! Pagina principal para acessar os exercicios, aulas e projetos criados durante o curso de Analise e Desenvolvimento de Sistemas.`;
+
+      searchInput.addEventListener("input", () => {
+        const filtro = searchInput.value.trim().toLowerCase();
+        let totalVisivel = 0;
 
         cards.forEach((card) => {
-          const nome = card.getAttribute("data-nome");
-
-          if (nome.includes(filtro)) {
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
+          const texto = card.textContent.toLowerCase();
+          const visivel = texto.includes(filtro);
+          card.hidden = !visivel;
+          if (visivel) totalVisivel += 1;
         });
+
+        sections.forEach((section) => {
+          const temCardVisivel = Array.from(section.querySelectorAll("[data-project]")).some(
+            (card) => !card.hidden,
+          );
+          section.hidden = !temCardVisivel;
+        });
+
+        emptyState.style.display = totalVisivel === 0 ? "block" : "none";
       });
 
-      function toggleDarkMode() {
+      themeButton.addEventListener("click", () => {
         document.body.classList.toggle("dark");
-      }
-
-      const msg = document.getElementById("mensagem");
-      const hora = new Date().getHours();
-
-      if (hora < 12) {
-        msg.innerText = "Bom dia!";
-      } else if (hora < 18) {
-        msg.innerText = "Boa tarde!";
-      } else {
-        msg.innerText = "Boa noite!";
-      }
+        themeButton.textContent = document.body.classList.contains("dark")
+          ? "Modo claro"
+          : "Modo escuro";
+      });
     </script>
   </body>
 </html>
