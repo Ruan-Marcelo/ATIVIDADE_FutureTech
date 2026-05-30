@@ -6,15 +6,15 @@
     <title>Portal de Atividades</title>
     <style>
       :root {
-        color-scheme: light;
-        --bg: #f5f7fb;
-        --panel: #ffffff;
-        --text: #1f2937;
-        --muted: #5f6b7a;
-        --brand: #0f5f99;
-        --brand-dark: #0b416b;
-        --line: #d9e2ec;
-        --shadow: 0 12px 32px rgba(31, 41, 55, 0.1);
+        color-scheme: dark;
+        --bg: #050008;
+        --panel: #110018;
+        --text: #ffffff;
+        --muted: #c9b8d8;
+        --brand: #8b2cff;
+        --brand-dark: #b374ff;
+        --line: #2a0a38;
+        --shadow: none;
       }
 
       * {
@@ -31,14 +31,14 @@
 
       body.dark {
         color-scheme: dark;
-        --bg: #111827;
-        --panel: #1f2937;
-        --text: #f8fafc;
-        --muted: #cbd5e1;
-        --brand: #38bdf8;
-        --brand-dark: #7dd3fc;
-        --line: #374151;
-        --shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        --bg: #12001f;
+        --panel: #050008;
+        --text: #ffffff;
+        --muted: #d8c2f0;
+        --brand: #6f1ed8;
+        --brand-dark: #d8b4ff;
+        --line: #3d0a5e;
+        --shadow: none;
       }
 
       a {
@@ -47,7 +47,7 @@
       }
 
       .page-header {
-        background: linear-gradient(135deg, #073b63, #0f5f99 55%, #13856f);
+        background: #08000d;
         color: #ffffff;
         padding: 48px 24px 42px;
       }
@@ -72,7 +72,7 @@
       .hero p {
         max-width: 760px;
         margin: 0;
-        color: rgba(255, 255, 255, 0.86);
+        color: #dcc9f0;
         font-size: 1.05rem;
         line-height: 1.6;
       }
@@ -90,25 +90,25 @@
         flex: 1 1 280px;
         max-width: 520px;
         height: 44px;
-        border: 1px solid rgba(255, 255, 255, 0.42);
+        border: 1px solid #7d35d8;
         border-radius: 8px;
         padding: 0 14px;
-        background: rgba(255, 255, 255, 0.14);
+        background: #15001f;
         color: #ffffff;
         font: inherit;
         outline: none;
       }
 
       .search::placeholder {
-        color: rgba(255, 255, 255, 0.74);
+        color: #bda4d6;
       }
 
       .theme-button {
         min-height: 44px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid #8b2cff;
         border-radius: 8px;
         padding: 0 16px;
-        background: rgba(255, 255, 255, 0.14);
+        background: #8b2cff;
         color: #ffffff;
         font: inherit;
         font-weight: 700;
@@ -287,7 +287,7 @@
             autocomplete="off"
           />
           <button class="theme-button" id="themeButton" type="button">
-            Modo escuro
+            Mais roxo
           </button>
         </div>
       </div>
@@ -531,8 +531,8 @@
       themeButton.addEventListener("click", () => {
         document.body.classList.toggle("dark");
         themeButton.textContent = document.body.classList.contains("dark")
-          ? "Modo claro"
-          : "Modo escuro";
+          ? "Mais preto"
+          : "Mais roxo";
       });
     </script>
   </body>
