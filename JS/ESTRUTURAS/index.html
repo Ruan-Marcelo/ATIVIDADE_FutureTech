@@ -62,6 +62,12 @@
         margin-left: 10px;
         border-radius: 5px;
     }
+    .sensor {
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+    }
 </style>
 <body>
     <div class="container">
@@ -85,6 +91,12 @@
     <div class="dataNasc">
         <label for="dataNasc">Digite sua data de nascimento:</label>
         <select id="anoDropdown"></select>
+    </div>
+
+    <div class="sensor">
+        <h3>Sensor de Temperatura</h3>
+        <p id="">Status <span id="status">Normal</span></p>
+        <p>Temp: <span id="temp"></span>°C</p>
     </div>
 
     <script src="app.js"></script>

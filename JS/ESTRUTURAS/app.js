@@ -42,3 +42,25 @@ for(let i = 2023; i >= 1900; i--){
     option.textContent = i;
     dropdown.appendChild(option);
 }
+
+setInterval(() => {
+   let temperatura = Math.floor(Math.random() * 80) + 20;
+   const statusTxt = document.getElementById('status');
+   const tempTxt = document.getElementById('temp');
+
+    tempTxt.textContent = temperatura;
+
+    if(temperatura < 30){
+        statusTxt.textContent = 'Temperatura baixa';
+        statusTxt.style.color = 'green';
+    }
+    else if(temperatura >= 30 && temperatura < 60){
+        statusTxt.textContent = 'Temperatura moderada';
+        statusTxt.style.color = 'orange';
+    }
+    else{
+        statusTxt.textContent = 'Temperatura alta';
+        statusTxt.style.color = 'red';
+    }
+
+}, 1000);
