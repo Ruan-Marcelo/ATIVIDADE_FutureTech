@@ -1,71 +1,55 @@
-<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=header&text=Atividades%20Senai&fontSize=40&fontColor=ffffff"/> </p> <p align="center">🚀 Projetos e atividades desenvolvidos durante o curso de Análise e Desenvolvimento de Sistemas no SENAI</p>
-📌 Sobre o Repositório
+# Atividades SENAI
 
-Este repositório reúne diversas atividades e projetos realizados durante o curso, com o objetivo de:
+Repositorio com atividades, aulas e projetos desenvolvidos durante o curso de Analise e Desenvolvimento de Sistemas no SENAI.
 
-Praticar HTML e CSS
-Desenvolver layouts e estilos
-Aplicar conceitos de Web Design e Front-end
-Documentar minha evolução como estudante
-🛠 Tecnologias Utilizadas
-<p align="center"> <img src="https://skillicons.dev/icons?i=html,css,js,git,github,visualstudio" /> </p>
-Principais tecnologias usadas:
+## Acesso rapido
 
-HTML – Estrutura das páginas
-CSS – Estilos e layouts
-JavaScript – Funcionalidades e interatividade
-Git & GitHub – Controle de versão
-Visual Studio / VS Code – Editor e desenvolvimento
-📂 Estrutura do Repositório
+Abra o arquivo [`index.html`](./index.html) na raiz do repositorio para acessar o portal com todos os projetos organizados por categoria.
 
-O repositório contém diversas pastas com projetos independentes:
+## Objetivo
 
-📁 projeto-portal – Portal desenvolvido com HTML/CSS
-📁 curriculo – Currículo estilizado
-📁 aula_html1 / aula_html2 – Atividades de aula
-📁 FutureTech – Projeto prático do curso
-📁 Portal de Identidade Digital – Projeto final compactado
-📁 CSS – Estilos utilizados em diferentes projetos
+Este repositorio documenta a evolucao dos estudos em desenvolvimento web, reunindo exercicios praticos de HTML, CSS, JavaScript, layout, formularios, logica de programacao e pequenos projetos de interface.
 
-Cada pasta representa um projeto ou atividade independente.
+## Tecnologias
 
-⚙️ Como Executar os Projetos
+- HTML para estrutura das paginas.
+- CSS para estilos, responsividade e organizacao visual.
+- JavaScript para interatividade, calculos e manipulacao da pagina.
+- Git e GitHub para controle de versao.
 
-1️⃣ Clone o repositório:
+## Estrutura
 
+- `index.html`: portal principal com links para as atividades.
+- `aula_html1/` e `aula_html2/`: exercicios iniciais de HTML.
+- `curriculo/`, `projeto-perfil/` e `Portal de Identidade Digital/`: paginas pessoais.
+- `FutureTech/` e `estilizado/`: projeto tematico sobre tecnologia sustentavel.
+- `projeto-portal/`: portal TechNews sobre Industria 4.0.
+- `Atividade-Prática-Portal-SENAI-Ribeirão-Preto-RuanMarcelo/`: atividade pratica do portal SENAI.
+- `ADS - JavaScripts/` e `JS/`: exercicios e projetos de JavaScript.
+- `Animatrix/`, `gestor copa/` e `Dashboard-Industrial-SCADA/`: projetos com interfaces mais completas.
+- `arvoreDNS.html` e `Jornada.html`: estudos visuais sobre conceitos de tecnologia.
+
+## Como executar
+
+1. Clone o repositorio:
+
+```bash
 git clone https://github.com/Ruan-Marcelo/Atividade_Faculdade.git
+```
 
-2️⃣ Entre na pasta desejada:
+2. Entre na pasta do projeto:
 
-cd Atividade_Faculdade/nome-da-pasta
+```bash
+cd Atividade_Faculdade
+```
 
-3️⃣ Abra os arquivos HTML no navegador
+3. Abra `index.html` no navegador.
 
-Todos os projetos são estáticos, portanto não exigem servidor adicional.
+Os projetos sao estaticos e nao exigem servidor local.
 
-📊 Estatísticas do GitHub
-<div align="center">
+## Autor
 
-<img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Ruan-Marcelo&show_icons=true&theme=dracula&hide_border=true"/>
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Ruan-Marcelo&theme=dracula&hide_border=true"/>
+Ruan Marcelo Ramacioti Luz
 
-</div>
-🤝 Contribuições
-
-Contribuições são bem-vindas:
-
-Faça um Fork do projeto
-Crie uma nova branch: git checkout -b minha-feature
-Faça suas alterações
-Envie um Pull Request
-🌐 Contato
-
-📌 GitHub: Ruan-Marcelo
-
-⭐ Apoie o Projeto
-
-Se gostou do repositório:
-
-⭐ Deixe uma estrela para apoiar o projeto
-
-<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer"/> </p>
+- GitHub: [Ruan-Marcelo](https://github.com/Ruan-Marcelo)
+- Site: [zruanzito.com.br](http://zruanzito.com.br)
