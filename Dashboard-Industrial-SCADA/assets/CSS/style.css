@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', monospace;
+    background: linear-gradient(135deg, #0f051d, #1a0933);
+    color: #f5f3ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(24, 12, 48, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid #a855f7;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+h1 {
+    text-align: center;
+    color: #c084fc;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #a855f7;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #d8b4fe;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #241046;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+h2,
+h3 {
+    color: #c084fc;
+    margin-bottom: 15px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+input,
+select {
+    background: #140926;
+    color: white;
+    border: 1px solid #7e22ce;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #c084fc;
+    box-shadow: 0 0 10px #a855f7;
+}
+
+button {
+    background: linear-gradient(45deg, #9333ea, #7e22ce);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #a855f7;
+}
+
+.status-box,
+.sensor-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #140926;
+    border-radius: 10px;
+    border: 1px solid #6b21a8;
+}
+
+.oculto {
+    display: none;
+}
+
+.erro {
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.sucesso {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.normal {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.alerta {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.perigo {
+    color: #ff1744;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #ff1744;
+}
+
+/* Temperatura */
+#temperatura {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #c084fc;
+    text-shadow: 0 0 10px #a855f7;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #140926;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9333ea;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a855f7;
+}

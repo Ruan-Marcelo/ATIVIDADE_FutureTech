@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Industrial SCADA</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+</head>
+<body>
+
+    <main class="dashboard">
+        <h1>Dashboard Industrial SCADA</h1>
+        <p class="subtitulo">Monitoramento em Tempo Real - Indústria 4.0</p>
+
+        <section class="card">
+            <h2>Acesso do Operador</h2>
+
+            <input type="text" id="nomeOperador" placeholder="Digite seu nome">
+            <button onclick="entrarSistema()">Entrar</button>
+
+            <p id="mensagemAcesso"></p>
+        </section>
+
+        <section id="painelControle" class="card oculto">
+            <h2>Painel de Controle</h2>
+
+            <label for="listaMaquinas">Selecione a Máquina:</label>
+            <select id="listaMaquinas" onchange="mostrarStatusMaquina()"></select>
+
+            <div class="status-box">
+                <h3>Status da Máquina</h3>
+                <p id="statusMaquina">Aguardando seleção...</p>
+            </div>
+
+            <div class="sensor-box">
+                <h3>Sensor Térmico</h3>
+                <p>Temperatura: <span id="temperatura">--</span> °C</p>
+                <p id="statusSensor">Aguardando leitura...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="./assets/JS/app.js"></script>
+</body>
+</html>
