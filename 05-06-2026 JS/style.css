@@ -1,0 +1,235 @@
+/*
+  Projeto Pratico: Arsenal Arcano de Midgard
+  Autoria: Ruan - Curso Superior de Tecnologia em Analise e Desenvolvimento de Sistemas
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f7edff;
+  background:
+    radial-gradient(circle at top left, rgba(155, 58, 255, 0.36), transparent 30rem),
+    radial-gradient(circle at bottom right, rgba(156, 22, 45, 0.32), transparent 28rem),
+    linear-gradient(135deg, #08060f 0%, #1b102d 44%, #10131c 100%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  min-height: 42px;
+  border: 1px solid #c084fc;
+  border-radius: 6px;
+  padding: 0.72rem 1rem;
+  color: #180728;
+  background: linear-gradient(180deg, #f0d7ff, #a855f7 62%, #7f1d1d);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(216, 180, 254, 0.34);
+  background: rgba(8, 6, 15, 0.84);
+}
+
+.selo {
+  margin: 0 0 0.35rem;
+  color: #f0abfc;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.autor {
+  margin: 0.45rem 0 0;
+  color: #d8b4fe;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.65rem, 4vw, 3rem);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #e9d5ff;
+}
+
+.painel-janela {
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid rgba(216, 180, 254, 0.62);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #f5d0fe;
+  background: rgba(76, 29, 149, 0.62);
+  font-weight: 700;
+}
+
+.layout-principal {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 1.25rem;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem) 3rem;
+}
+
+.painel-controle,
+.area-inventario {
+  border: 1px solid rgba(192, 132, 252, 0.28);
+  border-radius: 8px;
+  background: rgba(13, 10, 24, 0.88);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.painel-controle {
+  padding: 1.1rem;
+}
+
+.area-inventario {
+  padding: 1.1rem;
+}
+
+.formulario-item {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.formulario-item label {
+  color: #ddd6fe;
+  font-weight: 700;
+}
+
+.formulario-item input,
+.formulario-item select {
+  width: 100%;
+  border: 1px solid rgba(233, 213, 255, 0.22);
+  border-radius: 6px;
+  padding: 0.72rem;
+  color: #fbf5ff;
+  background: #0d0918;
+}
+
+.barra-acoes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mensagem-sistema {
+  margin-bottom: 0;
+  color: #ddd6fe;
+}
+
+.mensagem-sistema.erro {
+  color: #ff6d6d;
+  font-weight: 700;
+}
+
+.grupo-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.mochila-exibicao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.card-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(233, 213, 255, 0.18);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #201133, #111018);
+}
+
+.card-item.critico {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.22);
+}
+
+.card-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #09070f;
+}
+
+.conteudo-card {
+  padding: 1rem;
+}
+
+.conteudo-card h3 {
+  margin: 0 0 0.75rem;
+  color: #f5d0fe;
+  font-size: 1.1rem;
+}
+
+.detalhes-item {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  color: #e9d5ff;
+}
+
+.alerta-estoque {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  color: #ffffff;
+  background: #b82323;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .topo,
+  .barra-acoes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .layout-principal {
+    grid-template-columns: 1fr;
+  }
+
+  .grupo-botoes {
+    justify-content: stretch;
+  }
+
+  .grupo-botoes button {
+    flex: 1 1 150px;
+  }
+}

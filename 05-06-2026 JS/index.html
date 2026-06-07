@@ -1,0 +1,78 @@
+<!--
+  Projeto Pratico: Arsenal Arcano de Midgard
+  Autoria: Ruan - Curso Superior de Tecnologia em Analise e Desenvolvimento de Sistemas
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsenal Arcano de Midgard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <p class="selo">Arsenal de Guerra de JavaScript</p>
+      <h1>Arsenal Arcano de Midgard</h1>
+      <p class="autor">Projeto desenvolvido por Ruan</p>
+    </div>
+    <p id="painelJanela" class="painel-janela">Janela: aguardando leitura...</p>
+  </header>
+
+  <main class="layout-principal">
+    <section class="painel-controle" aria-labelledby="tituloFormulario">
+      <h2 id="tituloFormulario">Comprar e Guardar</h2>
+
+      <form id="formularioItem" class="formulario-item">
+        <label for="nomeItem">Nome do item</label>
+        <input id="nomeItem" name="nomeItem" type="text" placeholder="Ex: Lamina do Caos" required>
+
+        <label for="precoItem">Preco em ouro</label>
+        <input id="precoItem" name="precoItem" type="number" min="1" step="0.01" placeholder="120" required>
+
+        <label for="categoriaItem">Categoria</label>
+        <select id="categoriaItem" name="categoriaItem" required>
+          <option value="Armas">Armas</option>
+          <option value="Defesas">Defesas</option>
+          <option value="Poções">Poções</option>
+          <option value="Artefatos">Artefatos</option>
+        </select>
+
+        <label for="quantidadeItem">Quantidade</label>
+        <input id="quantidadeItem" name="quantidadeItem" type="number" min="1" step="1" placeholder="1" required>
+
+        <label for="imagemItem">Imagem</label>
+        <select id="imagemItem" name="imagemItem" required>
+          <option value="2.jpg">2.jpg - Machado</option>
+          <option value="3.jpg">3.jpg - Escudo</option>
+          <option value="4.jpg">4.jpg - Pedra de cura</option>
+          <option value="5.jpg">5.jpg - Hidromel</option>
+        </select>
+
+        <button type="submit">Adicionar item</button>
+      </form>
+    </section>
+
+    <section class="area-inventario" aria-labelledby="tituloInventario">
+      <div class="barra-acoes">
+        <div>
+          <h2 id="tituloInventario">Equipamentos do Arsenal</h2>
+          <p id="mensagemSistema" class="mensagem-sistema">Arsenal original carregado.</p>
+        </div>
+
+        <div class="grupo-botoes" aria-label="Acoes do inventario">
+          <button id="botaoDesconto" type="button">Pechincha Arcana</button>
+          <button id="botaoFiltro" type="button">Visao Alquimica</button>
+          <button id="botaoRestaurar" type="button">Ver Tudo</button>
+          <button id="botaoOuro" type="button">Contar Ouro</button>
+        </div>
+      </div>
+
+      <div id="mochilaExibicao" class="mochila-exibicao" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
