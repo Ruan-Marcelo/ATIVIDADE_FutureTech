@@ -1,0 +1,322 @@
+:root {
+  --bg: #09070f;
+  --panel: #15101f;
+  --panel-strong: #20142f;
+  --purple: #8b2cff;
+  --purple-soft: #b56cff;
+  --violet-line: rgba(139, 44, 255, 0.48);
+  --text: #f5f0ff;
+  --muted: #b8accb;
+  --danger: #ff3864;
+  --success: #35f58a;
+  --warning: #ffc857;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(139, 44, 255, 0.22), transparent 34rem),
+    linear-gradient(135deg, #050407 0%, var(--bg) 46%, #13091f 100%);
+  font-family: "Share Tech Mono", monospace;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, #000, transparent 86%);
+}
+
+.monitor-header,
+.monitor-card,
+.player-card {
+  border: 1px solid var(--violet-line);
+  background: linear-gradient(145deg, rgba(32, 20, 47, 0.96), rgba(12, 8, 18, 0.98));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.52), 0 0 36px rgba(139, 44, 255, 0.14);
+}
+
+.monitor-header {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem;
+  border-radius: 8px;
+}
+
+.header-kicker,
+.section-label,
+.progress-label,
+.display-caption,
+.footer-note {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1,
+.system-title,
+.player-title,
+.station-code,
+.digital-display {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4vw, 4.1rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(139, 44, 255, 0.68);
+}
+
+.operator-name {
+  color: #e8defc;
+}
+
+.operator-name strong {
+  color: var(--purple-soft);
+}
+
+.header-status {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: end;
+}
+
+.station-code {
+  display: inline-flex;
+  min-width: 6.5rem;
+  justify-content: center;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(181, 108, 255, 0.62);
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(139, 44, 255, 0.14);
+}
+
+.badge {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0;
+}
+
+.monitor-card,
+.player-card {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.system-title,
+.player-title {
+  font-size: clamp(1.4rem, 2.4vw, 2.25rem);
+  font-weight: 900;
+}
+
+.sensor-chip {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(53, 245, 138, 0.34);
+  border-radius: 6px;
+  color: #dfffe9;
+  background: rgba(53, 245, 138, 0.08);
+}
+
+.sensor-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--warning);
+  box-shadow: 0 0 14px var(--warning);
+}
+
+.sensor-dot.online {
+  background: var(--success);
+  box-shadow: 0 0 16px var(--success);
+}
+
+.sensor-dot.offline {
+  background: var(--danger);
+  box-shadow: 0 0 16px var(--danger);
+}
+
+.display-shell {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid rgba(181, 108, 255, 0.5);
+  border-radius: 8px;
+  background: #050407;
+}
+
+.display-caption {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.digital-display {
+  display: grid;
+  min-height: 9rem;
+  place-items: center;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #f3e7ff;
+  background:
+    linear-gradient(180deg, rgba(139, 44, 255, 0.2), rgba(0, 0, 0, 0.04)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04) 1px, transparent 1px, transparent 7px);
+  font-size: clamp(2.4rem, 8vw, 5.7rem);
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 0 0 18px rgba(181, 108, 255, 0.6);
+  transition: opacity 180ms ease, color 220ms ease, text-shadow 220ms ease, transform 220ms ease;
+}
+
+.digital-display.syncing {
+  opacity: 0.42;
+  transform: scale(0.985);
+}
+
+.digital-display.online {
+  color: #e9fff2;
+  text-shadow: 0 0 14px rgba(53, 245, 138, 0.78), 0 0 34px rgba(139, 44, 255, 0.52);
+}
+
+.digital-display.critical,
+.digital-display.offline {
+  color: #ffe9ef;
+  text-shadow: 0 0 14px rgba(255, 56, 100, 0.82), 0 0 30px rgba(255, 56, 100, 0.38);
+}
+
+.loading-line {
+  min-height: 1.6rem;
+  color: var(--muted);
+}
+
+.pressure-progress {
+  height: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  transition: width 360ms ease, background-color 220ms ease;
+}
+
+.progress-value {
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+}
+
+.btn-sync {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #7c24e8, #b226ff);
+  box-shadow: 0 0 24px rgba(139, 44, 255, 0.35);
+}
+
+.btn-sync:hover,
+.btn-sync:focus-visible {
+  color: #fff;
+  background: linear-gradient(135deg, #9e45ff, #d05cff);
+}
+
+.btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.alert-danger {
+  border-color: rgba(255, 56, 100, 0.52);
+  color: #ffe8ee;
+  background: rgba(255, 56, 100, 0.14);
+}
+
+.player-card {
+  position: relative;
+}
+
+.player-image-wrap {
+  position: relative;
+  min-height: 22rem;
+  overflow: hidden;
+  background: #08050d;
+}
+
+.player-image {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.player-image-wrap::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 28%, rgba(9, 7, 15, 0.28) 58%, rgba(9, 7, 15, 0.96));
+}
+
+.player-number {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.25rem;
+  z-index: 1;
+  font-family: "Orbitron", sans-serif;
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 0 24px rgba(139, 44, 255, 0.86);
+}
+
+.player-metric {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
+
+.player-metric strong {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.footer-note {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767.98px) {
+  .monitor-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-status {
+    justify-items: start;
+  }
+
+  .digital-display {
+    min-height: 7rem;
+  }
+}
