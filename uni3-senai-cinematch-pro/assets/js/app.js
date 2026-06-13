@@ -1,10 +1,11 @@
 const STORAGE_KEY = "cinematchDragonBallFilmes";
+const SEED_VERSION_KEY = "cinematchDragonBallSeedV2";
 
 class Filme {
-  constructor(titulo, personagem, categoria, minutos, capa, youtubeId, status, descricao) {
+  constructor(titulo, destaque, categoria, minutos, capa, youtubeId, status, descricao) {
     this.id = crypto.randomUUID();
     this.titulo = titulo;
-    this.personagem = personagem;
+    this.destaque = destaque;
     this.categoria = categoria;
     this.minutos = Number(minutos);
     this.capa = capa;
@@ -15,6 +16,48 @@ class Filme {
   }
 }
 
+const filmesIniciais = [
+  {
+    id: "dragon-ball-super-hero",
+    titulo: "Dragon Ball Super: Super Hero",
+    destaque: "Red Ribbon",
+    categoria: "Filme",
+    minutos: 99,
+    capa: "https://dragon-ball-official.com/dragonball/jp/news/2022/02/dbs_pub_vol_2_jp.jpg?_=1781040840",
+    youtubeId: "Y9qRbQRne20",
+    status: "Assistido",
+    descricao:
+      "A nova ameaca tecnologica coloca os defensores da Terra em uma batalha cheia de energia, estrategia e transformacoes.",
+    criadoEm: "2026-06-13T00:00:00.000Z",
+  },
+  {
+    id: "dragon-ball-z-battle-of-gods",
+    titulo: "Dragon Ball Z: Battle of Gods",
+    destaque: "Deuses",
+    categoria: "Filme",
+    minutos: 85,
+    capa: "https://image.tmdb.org/t/p/original/bS1gToEop89CAKYKLQxEAIBDI6U.jpg",
+    youtubeId: "Y9qRbQRne20",
+    status: "Assistido",
+    descricao:
+      "O equilibrio do universo entra em jogo quando uma forca divina chega a Terra em busca de um desafio a altura.",
+    criadoEm: "2026-06-13T00:00:00.000Z",
+  },
+  {
+    id: "dragon-ball-z-resurrection-f",
+    titulo: "Dragon Ball Z: Resurrection F",
+    destaque: "Vilao classico",
+    categoria: "Filme",
+    minutos: 94,
+    capa: "https://m.media-amazon.com/images/S/pv-target-images/2268f9d1ace9169972f860402f793cc0b04fb673363557aeeed3ce5cff62b793._SX1080_FMjpg_.jpg",
+    youtubeId: "Y9qRbQRne20",
+    status: "Na lista",
+    descricao:
+      "Um inimigo marcante retorna com um exercito poderoso, elevando a tensao e o ritmo das batalhas.",
+    criadoEm: "2026-06-13T00:00:00.000Z",
+  },
+];
+
 const carregarFilmes = () => {
   const dados = localStorage.getItem(STORAGE_KEY);
   return dados ? JSON.parse(dados) : [];
@@ -22,6 +65,18 @@ const carregarFilmes = () => {
 
 const salvarFilmes = (filmes) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filmes));
+};
+
+const iniciarCatalogo = () => {
+  if (!localStorage.getItem(SEED_VERSION_KEY)) {
+    const filmes = carregarFilmes();
+    const filmesSemExemplosAntigos = filmes.filter(
+      (filme) => !filmesIniciais.some((exemplo) => exemplo.id === filme.id),
+    );
+
+    salvarFilmes([...filmesIniciais, ...filmesSemExemplosAntigos]);
+    localStorage.setItem(SEED_VERSION_KEY, "true");
+  }
 };
 
 const limparYoutubeId = (valor) => {
@@ -51,7 +106,7 @@ const configurarFormulario = () => {
     const formData = new FormData(form);
     const filme = new Filme(
       formData.get("titulo").trim(),
-      formData.get("personagem"),
+      formData.get("destaque"),
       formData.get("categoria"),
       formData.get("minutos"),
       formData.get("capa").trim(),
@@ -72,10 +127,11 @@ const configurarFormulario = () => {
 const criarCard = (filme) => {
   const article = document.createElement("article");
   article.className = "card";
+  const destaque = filme.destaque || filme.personagem || "Dragon Ball";
 
   const imagem = document.createElement("img");
   imagem.src = filme.capa;
-  imagem.alt = `Capa da obra ${filme.titulo}, com destaque para ${filme.personagem}`;
+  imagem.alt = `Imagem de capa da obra ${filme.titulo}, categoria ${filme.categoria}`;
   imagem.loading = "lazy";
 
   const body = document.createElement("div");
@@ -87,7 +143,7 @@ const criarCard = (filme) => {
   const tags = document.createElement("div");
   tags.className = "tags";
 
-  [filme.personagem, filme.categoria, filme.status, `${filme.minutos} min`].forEach((texto) => {
+  [destaque, filme.categoria, filme.status, `${filme.minutos} min`].forEach((texto) => {
     const tag = document.createElement("span");
     tag.className = "tag";
     tag.textContent = texto;
@@ -140,5 +196,6 @@ const renderizarCatalogo = () => {
   emptyState.style.display = filmes.length === 0 ? "block" : "none";
 };
 
+iniciarCatalogo();
 configurarFormulario();
 renderizarCatalogo();

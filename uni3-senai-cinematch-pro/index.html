@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="CineMatch Pro Dragon Ball: cadastre filmes, sagas e especiais com capas, trailer do YouTube e tempo assistido."
+      content="CineMatch Pro Dragon Ball: catalogo tematico com filmes cadastrados, capas, trailer do YouTube e tempo assistido."
     />
     <title>CineMatch Pro | Cadastro Dragon Ball</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -30,10 +30,10 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Universo Dragon Ball</p>
-            <h1>Monte seu catalogo com Vegeta, Broly e suas sagas favoritas.</h1>
+            <h1>Monte seu catalogo tematico com filmes e sagas de Dragon Ball.</h1>
             <p>
-              Cadastre obras com capa, trailer e minutos assistidos. Os dados ficam salvos no navegador
-              e aparecem automaticamente no catalogo.
+              A pagina ja vem com exemplos cadastrados, capas e trailers. Voce tambem pode salvar
+              novas obras no navegador e acompanhar tudo no catalogo.
             </p>
           </div>
           <aside class="power-panel" aria-label="Destaques da atividade">
@@ -53,18 +53,18 @@
         <form class="movie-form" id="movieForm">
           <div class="field">
             <label for="titulo">Titulo da obra</label>
-            <input id="titulo" name="titulo" type="text" placeholder="Ex: Dragon Ball Super: Broly" required />
+            <input id="titulo" name="titulo" type="text" placeholder="Ex: Dragon Ball Super: Super Hero" required />
           </div>
 
           <div class="field">
-            <label for="personagem">Personagem em destaque</label>
-            <select id="personagem" name="personagem" required>
+            <label for="destaque">Destaque da obra</label>
+            <select id="destaque" name="destaque" required>
               <option value="">Selecione</option>
-              <option value="Vegeta">Vegeta</option>
-              <option value="Broly">Broly</option>
-              <option value="Goku">Goku</option>
-              <option value="Gohan">Gohan</option>
-              <option value="Outro guerreiro">Outro guerreiro</option>
+              <option value="Guerreiros Z">Guerreiros Z</option>
+              <option value="Torneio">Torneio</option>
+              <option value="Red Ribbon">Red Ribbon</option>
+              <option value="Deuses">Deuses</option>
+              <option value="Vilao classico">Vilao classico</option>
             </select>
           </div>
 
@@ -115,7 +115,7 @@
               id="descricao"
               name="descricao"
               rows="4"
-              placeholder="Ex: Broly libera uma energia lendaria enquanto Vegeta mostra tecnica e orgulho saiyajin."
+              placeholder="Ex: Uma batalha decisiva mistura humor, energia saiyajin e ameacas capazes de mudar o destino da Terra."
               required
             ></textarea>
           </div>
