@@ -275,33 +275,6 @@ h1 {
   background: linear-gradient(180deg, transparent 28%, rgba(9, 7, 15, 0.28) 58%, rgba(9, 7, 15, 0.96));
 }
 
-.player-number {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.25rem;
-  z-index: 1;
-  font-family: "Orbitron", sans-serif;
-  font-size: 5.5rem;
-  font-weight: 900;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 0 24px rgba(139, 44, 255, 0.86);
-}
-
-.player-metric {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--muted);
-}
-
-.player-metric strong {
-  color: #fff;
-  text-transform: uppercase;
-}
-
 .footer-note {
   font-size: 0.9rem;
 }
