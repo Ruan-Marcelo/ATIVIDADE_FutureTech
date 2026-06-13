@@ -274,7 +274,7 @@
       <div class="container hero">
         <h1>Portal de Atividades</h1>
         <p id="mensagem">
-          Pagina principal para acessar os exercicios, aulas e projetos criados
+          Pagina principal para acessar atividades, aulas, estudos e projetos criados
           durante o curso de Analise e Desenvolvimento de Sistemas.
         </p>
 
@@ -346,6 +346,11 @@
               <a href="./gestor%20copa/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
             </article>
             <article class="project-card" data-project>
+              <h3>Prensa H5</h3>
+              <p>Central de monitoramento para sistema hidraulico industrial.</p>
+              <a href="./Prensa%20Hidra%C3%BAlica/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
               <h3>Controle de Veiculos</h3>
               <p>Exercicio de JavaScript orientado a objetos aplicado a veiculos.</p>
               <a href="./JS/veiculos/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
@@ -380,6 +385,16 @@
               <a href="./aula_html1/teste.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
             </article>
             <article class="project-card" data-project>
+              <h3>Sobre o Curso</h3>
+              <p>Pagina interna da aula HTML com informacoes complementares.</p>
+              <a href="./aula_html1/paginas/sobre.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Pagina do Autor</h3>
+              <p>Pagina de equipe com dados do autor da atividade.</p>
+              <a href="./aula_html1/paginas/equipe/autor.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
               <h3>Formulario de Cadastro</h3>
               <p>Atividade de formularios em HTML.</p>
               <a href="./aula_html2/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
@@ -393,6 +408,11 @@
               <h3>Card de Identidade</h3>
               <p>Atividade CSS com card visual e imagens.</p>
               <a href="./att-20-03/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Galeria de Imagens</h3>
+              <p>Pagina complementar da atividade CSS com exibicao de imagens.</p>
+              <a href="./att-20-03/img.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
             </article>
             <article class="project-card" data-project>
               <h3>Curriculo</h3>
@@ -427,6 +447,11 @@
               <h3>Portal SENAI Ribeirao Preto</h3>
               <p>Atividade pratica com midias e pagina de matricula.</p>
               <a href="./Atividade-Pr%C3%A1tica-Portal-SENAI-Ribeir%C3%A3o-Preto-RuanMarcelo/index.html" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
+            </article>
+            <article class="project-card" data-project>
+              <h3>Matricula SENAI</h3>
+              <p>Formulario de intencao de matricula da atividade do portal SENAI.</p>
+              <a href="./Atividade-Pr%C3%A1tica-Portal-SENAI-Ribeir%C3%A3o-Preto-RuanMarcelo/matricula.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
             </article>
             <article class="project-card" data-project>
               <h3>TechNews Industria 4.0</h3>
@@ -477,6 +502,11 @@
               <p>Exercicio de if, else e tomada de decisao.</p>
               <a href="./JS/ESTRUTURAS/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
             </article>
+            <article class="project-card" data-project>
+              <h3>Arsenal Arcano de Midgard</h3>
+              <p>Atividade de JavaScript com cadastro e inventario de equipamentos.</p>
+              <a href="./05-06-2026%20JS/index.html" target="_blank" rel="noopener noreferrer">Abrir atividade</a>
+            </article>
           </div>
         </section>
       </div>
@@ -510,7 +540,7 @@
 
       const hora = new Date().getHours();
       const saudacao = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
-      mensagem.textContent = `${saudacao}! Pagina principal para acessar os exercicios, aulas e projetos criados durante o curso de Analise e Desenvolvimento de Sistemas.`;
+      mensagem.textContent = `${saudacao}! Pagina principal para acessar atividades, aulas, estudos e projetos criados durante o curso de Analise e Desenvolvimento de Sistemas.`;
 
       searchInput.addEventListener("input", () => {
         const filtro = searchInput.value.trim().toLowerCase();
