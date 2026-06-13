@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Catalogo CineMatch Pro com obras Dragon Ball salvas no navegador, cards dinamicos e painel de estatisticas."
+    />
+    <title>CineMatch Pro | Catalogo Dragon Ball</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navegacao principal">
+        <a class="brand" href="./index.html" aria-label="CineMatch Pro inicio">
+          <span>CineMatch</span>
+          <strong>Pro</strong>
+        </a>
+        <div class="nav-links">
+          <a href="./index.html">Cadastro</a>
+          <a href="./catalogo.html" aria-current="page">Catalogo</a>
+          <a href="https://www.imdb.com/chart/top/" target="_blank" rel="noopener noreferrer">Sugestoes</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="catalog-page">
+      <section class="catalog-hero container" aria-labelledby="titulo-catalogo">
+        <div>
+          <p class="eyebrow">Arquivo de batalha</p>
+          <h1 id="titulo-catalogo">Catalogo CineMatch Pro</h1>
+          <p>Obras cadastradas no navegador com capas, trailers e estatisticas de minutos assistidos.</p>
+        </div>
+        <a class="button-primary" href="./index.html">Cadastrar nova obra</a>
+      </section>
+
+      <section class="stats container" aria-label="Estatisticas do catalogo">
+        <article>
+          <span id="totalObras">0</span>
+          <p>obras salvas</p>
+        </article>
+        <article>
+          <span id="totalMinutos">0</span>
+          <p>minutos assistidos</p>
+        </article>
+        <article>
+          <span id="totalAssistidos">0</span>
+          <p>marcadas como assistidas</p>
+        </article>
+      </section>
+
+      <section class="container" aria-label="Lista de obras">
+        <div class="catalog-grid" id="catalogo"></div>
+        <div class="empty-state" id="emptyState">
+          <h2>Nenhuma obra cadastrada ainda</h2>
+          <p>Cadastre filmes, sagas ou especiais de Dragon Ball para montar seu catalogo.</p>
+          <a class="button-secondary" href="./index.html">Ir para cadastro</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>uni3-senai-cinematch-pro | Catalogo persistido com localStorage</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>

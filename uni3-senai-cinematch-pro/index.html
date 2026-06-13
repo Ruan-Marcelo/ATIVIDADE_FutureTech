@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CineMatch Pro Dragon Ball: cadastre filmes, sagas e especiais com capas, trailer do YouTube e tempo assistido."
+    />
+    <title>CineMatch Pro | Cadastro Dragon Ball</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navegacao principal">
+        <a class="brand" href="./index.html" aria-label="CineMatch Pro inicio">
+          <span>CineMatch</span>
+          <strong>Pro</strong>
+        </a>
+        <div class="nav-links">
+          <a href="./index.html" aria-current="page">Cadastro</a>
+          <a href="./catalogo.html">Catalogo</a>
+          <a href="https://www.imdb.com/chart/top/" target="_blank" rel="noopener noreferrer">Sugestoes</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Universo Dragon Ball</p>
+            <h1>Monte seu catalogo com Vegeta, Broly e suas sagas favoritas.</h1>
+            <p>
+              Cadastre obras com capa, trailer e minutos assistidos. Os dados ficam salvos no navegador
+              e aparecem automaticamente no catalogo.
+            </p>
+          </div>
+          <aside class="power-panel" aria-label="Destaques da atividade">
+            <span>Classe Filme</span>
+            <strong>localStorage</strong>
+            <span>Trailer via YouTube</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="form-section container" aria-labelledby="titulo-cadastro">
+        <div class="section-heading">
+          <p class="eyebrow">Cadastro</p>
+          <h2 id="titulo-cadastro">Adicionar obra ao radar saiyajin</h2>
+        </div>
+
+        <form class="movie-form" id="movieForm">
+          <div class="field">
+            <label for="titulo">Titulo da obra</label>
+            <input id="titulo" name="titulo" type="text" placeholder="Ex: Dragon Ball Super: Broly" required />
+          </div>
+
+          <div class="field">
+            <label for="personagem">Personagem em destaque</label>
+            <select id="personagem" name="personagem" required>
+              <option value="">Selecione</option>
+              <option value="Vegeta">Vegeta</option>
+              <option value="Broly">Broly</option>
+              <option value="Goku">Goku</option>
+              <option value="Gohan">Gohan</option>
+              <option value="Outro guerreiro">Outro guerreiro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Selecione</option>
+              <option value="Filme">Filme</option>
+              <option value="Saga">Saga</option>
+              <option value="Especial">Especial</option>
+              <option value="Episodio">Episodio</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="minutos">Minutos assistidos</label>
+            <input id="minutos" name="minutos" type="number" min="0" step="1" placeholder="100" required />
+          </div>
+
+          <div class="field field-wide">
+            <label for="capa">URL da capa</label>
+            <input
+              id="capa"
+              name="capa"
+              type="url"
+              placeholder="https://exemplo.com/capa.jpg"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="youtubeId">ID do YouTube</label>
+            <input id="youtubeId" name="youtubeId" type="text" placeholder="Ex: FHgm89hKpXU" required />
+          </div>
+
+          <div class="field">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option value="Assistido">Assistido</option>
+              <option value="Assistindo">Assistindo</option>
+              <option value="Na lista">Na lista</option>
+            </select>
+          </div>
+
+          <div class="field field-wide">
+            <label for="descricao">Descricao curta</label>
+            <textarea
+              id="descricao"
+              name="descricao"
+              rows="4"
+              placeholder="Ex: Broly libera uma energia lendaria enquanto Vegeta mostra tecnica e orgulho saiyajin."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="button-primary" type="submit">Salvar no catalogo</button>
+            <a class="button-secondary" href="./catalogo.html">Ver catalogo</a>
+          </div>
+
+          <p class="form-feedback" id="feedback" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>uni3-senai-cinematch-pro | Atividade de logica, persistencia e midia</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
