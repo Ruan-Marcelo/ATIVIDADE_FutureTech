@@ -1,5 +1,5 @@
-const STORAGE_KEY = "cinematchDragonBallFilmes";
-const SEED_VERSION_KEY = "cinematchDragonBallSeedV2";
+const STORAGE_KEY = "catalogoFilmesDragonBall";
+const SEED_VERSION_KEY = "catalogoFilmesDragonBallSeedV1";
 
 class Filme {
   constructor(titulo, destaque, categoria, minutos, capa, youtubeId, status, descricao) {
@@ -19,28 +19,26 @@ class Filme {
 const filmesIniciais = [
   {
     id: "dragon-ball-super-hero",
-    titulo: "Dragon Ball Super: Super Hero",
-    destaque: "Red Ribbon",
+    titulo: "Dragon Ball Super: Broly",
+    destaque: "Broly",
     categoria: "Filme",
-    minutos: 99,
-    capa: "https://dragon-ball-official.com/dragonball/jp/news/2022/02/dbs_pub_vol_2_jp.jpg?_=1781040840",
+    minutos: 100,
+    capa: "https://dba.bn-ent.net/character/images/broly-dbs/portrait.png",
     youtubeId: "Y9qRbQRne20",
     status: "Assistido",
-    descricao:
-      "A nova ameaca tecnologica coloca os defensores da Terra em uma batalha cheia de energia, estrategia e transformacoes.",
+    descricao: "Filme com batalhas saiyajin e visual de Dragon Ball Super.",
     criadoEm: "2026-06-13T00:00:00.000Z",
   },
   {
     id: "dragon-ball-z-battle-of-gods",
     titulo: "Dragon Ball Z: Battle of Gods",
-    destaque: "Deuses",
+    destaque: "Vegeta",
     categoria: "Filme",
     minutos: 85,
-    capa: "https://image.tmdb.org/t/p/original/bS1gToEop89CAKYKLQxEAIBDI6U.jpg",
+    capa: "https://dba.bn-ent.net/character/images/vegeta-SSGSS/portrait.png",
     youtubeId: "Y9qRbQRne20",
     status: "Assistido",
-    descricao:
-      "O equilibrio do universo entra em jogo quando uma forca divina chega a Terra em busca de um desafio a altura.",
+    descricao: "Filme com deuses, humor e lutas marcantes.",
     criadoEm: "2026-06-13T00:00:00.000Z",
   },
   {
