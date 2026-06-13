@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prensa-H5 | Central de Monitoramento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="container py-4 py-lg-5">
+      <header class="monitor-header mb-4" aria-labelledby="titulo-central">
+        <div>
+          <p class="header-kicker mb-2">SENAI | Prensa-H5 | Unidade 04</p>
+          <h1 id="titulo-central" class="mb-2">CENTRAL DE MONITORAMENTO</h1>
+          <p class="operator-name mb-0">Painel desenvolvido por <strong>RUAN MARCELO RAMACIOTI LUZ</strong></p>
+        </div>
+        <div class="header-status text-lg-end" aria-label="Identificacao da estacao">
+          <span class="station-code">IHM-04</span>
+          <span id="statusBadge" class="badge rounded-pill text-bg-secondary">AGUARDANDO</span>
+        </div>
+      </header>
+
+      <section class="row g-4 align-items-stretch">
+        <div class="col-12 col-xl-8">
+          <article class="card monitor-card h-100" aria-labelledby="sistema-titulo">
+            <div class="card-body p-4 p-lg-5">
+              <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+                <div>
+                  <p class="section-label mb-2">Modulo de pressao principal</p>
+                  <h2 id="sistema-titulo" class="system-title mb-0">SISTEMA HIDRAULICO</h2>
+                </div>
+                <div class="sensor-chip align-self-start">
+                  <span class="sensor-dot" aria-hidden="true"></span>
+                  Sensor API-JSON
+                </div>
+              </div>
+
+              <div class="display-shell mb-4">
+                <span class="display-caption">PRESSAO ATUAL</span>
+                <div id="displayPressao" class="digital-display" aria-live="polite">0.0 BAR</div>
+              </div>
+
+              <div class="loading-line d-flex align-items-center gap-2 mb-4" aria-live="polite">
+                <div id="loadingSpinner" class="spinner-border spinner-border-sm text-light d-none" role="status">
+                  <span class="visually-hidden">Sincronizando sensor</span>
+                </div>
+                <span id="loadingText">Canal pronto para sincronizacao</span>
+              </div>
+
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="progress-label">Carga hidraulica</span>
+                  <span id="percentualPressao" class="progress-value">0%</span>
+                </div>
+                <div class="progress pressure-progress" role="progressbar" aria-label="Nivel de pressao hidraulica" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div id="barraPressao" class="progress-bar bg-success" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <div id="alertaErro" class="alert alert-danger d-none mb-4" role="alert">
+                <strong>FALHA CRITICA:</strong>
+                <span id="mensagemErro">Nao foi possivel conectar ao sensor.</span>
+              </div>
+
+              <div class="d-flex flex-column flex-sm-row gap-3">
+                <button id="btnSincronizar" class="btn btn-sync btn-lg" type="button">
+                  SINCRONIZAR SENSOR
+                </button>
+                <button id="btnFalha" class="btn btn-outline-light btn-lg" type="button">
+                  SIMULAR FALHA CRITICA
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-xl-4">
+          <aside class="card player-card h-100" aria-labelledby="neymar-titulo">
+            <div class="player-image-wrap">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/500px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+                alt="Neymar Jr. em campo"
+                class="player-image">
+              <span class="player-number">10</span>
+            </div>
+            <div class="card-body p-4">
+              <p class="section-label mb-2">Inspiracao visual do operador</p>
+              <h2 id="neymar-titulo" class="player-title mb-3">NEYMAR JR. MODE</h2>
+              <div class="player-metric">
+                <span>Reflexo</span>
+                <strong>rapido</strong>
+              </div>
+              <div class="player-metric">
+                <span>Controle</span>
+                <strong>preciso</strong>
+              </div>
+              <div class="player-metric">
+                <span>Painel</span>
+                <strong>roxo e preto</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="footer-note mt-4">
+        Escola SENAI "Engo Octavio Marcondes Ferraz" | Desenvolvimento Web Front-End | 1o Semestre
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
